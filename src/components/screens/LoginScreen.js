@@ -12,6 +12,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { screenWidth } from "../screenWidth";
 import Constants from "expo-constants";
 
+
 export default function LoginScreen() {
   
 
