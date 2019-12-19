@@ -26,7 +26,7 @@ var firebaseConfig = {
 if (!firebase.app.length) {
   firebase.initializeApp(firebaseConfig);
 }
-console.log("Verbindung zu " + firebaseConfig.databaseURL + " hergestellt!");
+console.log("Verbindung zur Datenbank " + firebaseConfig.databaseURL + " hergestellt!");
 //---------- Database Connection End -------------
 
 const Stack = createStackNavigator();
@@ -34,7 +34,7 @@ const Stack = createStackNavigator();
 function App() {
 
   //Globale Flag für das Anzeigen des Onboardings, wird false nach einmaligem Anzeigen
-  const flagOnboarding = false;
+  const flagOnboarding = true;
 
   return (
     <NavigationNativeContainer>
