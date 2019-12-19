@@ -30,8 +30,11 @@ var firebaseConfig = {
 };
 if (!firebase.app.length) {
   firebase.initializeApp(firebaseConfig);
+  console.log("Verbindung zu " + firebaseConfig.databaseURL + " hergestellt!");
+} else {
+  console.log("Verbindung zur Datenbank fehlgeschlagen!");
 }
-console.log("Verbindung zu " + firebaseConfig.databaseURL + " hergestellt!");
+
 //---------- Database Connection End -------------
 
 const Tab = createBottomTabNavigator();
