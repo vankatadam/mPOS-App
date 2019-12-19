@@ -21,3 +21,16 @@ export default function LoginScreen() {
       </div>
   );
 }
+
+//Registrieren eines Users
+function registerUser() {
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error){
+    var errorCode = error.errorCode;
+    var errorMessage = error.errorMessage;
+  })
+};
+
+//Einloggen des Users
+function loginUser() {
+
+};

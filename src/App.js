@@ -23,8 +23,9 @@ var firebaseConfig = {
   appId: "1:752966429225:web:727812a22ba0ad5721ca38",
   measurementId: "G-KKZNDY8S6J"
 };
-
-firebase.initializeApp(firebaseConfig);
+if (!firebase.app.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 console.log("Verbindung zu " + firebaseConfig.databaseURL + " hergestellt!");
 //---------- Database Connection End -------------
 
@@ -33,7 +34,7 @@ const Stack = createStackNavigator();
 function App() {
 
   //Globale Flag für das Anzeigen des Onboardings, wird false nach einmaligem Anzeigen
-  const flagOnboarding = true;
+  const flagOnboarding = false;
 
   return (
     <NavigationNativeContainer>
