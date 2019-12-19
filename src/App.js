@@ -17,7 +17,7 @@ function App() {
 
   //Globale Flag für das Anzeigen des Onboardings, wird false nach einmaligem Anzeigen
   const flagOnboarding = true;
-  
+
   return (
     <NavigationNativeContainer>
       <Stack.Navigator>
