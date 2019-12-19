@@ -14,13 +14,17 @@ import WelcomeScreen from "./components/screens/WelcomeScreen";
 const Stack = createStackNavigator();
 
 function App() {
+
+  //Globale Flag für das Anzeigen des Onboardings, wird false nach einmaligem Anzeigen
+  const flagOnboarding = true;
+  
   return (
     <NavigationNativeContainer>
       <Stack.Navigator>
-        <Stack.Screen 
+        {flagOnboarding && <Stack.Screen 
           options={{headerShown: false}}
           name={"Welcome Screen"}
-          component={WelcomeScreen} />
+          component={WelcomeScreen} />}
       </Stack.Navigator>
     </NavigationNativeContainer>
   );
