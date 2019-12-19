@@ -12,10 +12,10 @@ import { Ionicons } from "@expo/vector-icons";
 import { screenWidth } from "../screenWidth";
 import Constants from "expo-constants";
 
-export default function HomeScreen() {
+export default function Einkaufsliste() {
   return (
     <View>
-      <Text style={{ textAlign: "center" }}>HomeScreen</Text>
+      <Text style={{ textAlign: "center" }}>Einkaufsliste</Text>
     </View>
   );
 }
