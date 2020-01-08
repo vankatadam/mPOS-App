@@ -35,8 +35,12 @@ var firebaseConfig = {
   appId: "1:752966429225:web:727812a22ba0ad5721ca38",
   measurementId: "G-KKZNDY8S6J"
 };
+
+var fireConnEstablished = false;
+
 if (!firebase.app.length) {
   firebase.initializeApp(firebaseConfig);
+  fireConnEstablished = true;
   console.log("Verbindung zu " + firebaseConfig.databaseURL + " hergestellt!");
 } else {
   console.log("Verbindung zur Datenbank fehlgeschlagen!!!");
