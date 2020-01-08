@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Dimensions
 } from "react-native";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { TextInput, TouchableOpacity } from "react-native";
 
 // Firebase Import
 import * as firebase from "firebase";

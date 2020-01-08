@@ -9,6 +9,10 @@ import {
 } from "react-native";
 import { NavigationNativeContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+//Import der Login-/Register-Screens
+import LoginScreen from "./src/components/screens/LoginScreen";
+import RegisterScreen from "./src/components/screens/RegisterScreen";
+// ---------------------------------
 import WelcomeScreen from "./src/components/screens/WelcomeScreen";
 import HomeScreen from "./src/components/screens/HomeScreen";
 import Warenkorb from "./src/components/screens/Warenkorb";
@@ -75,7 +79,9 @@ function App() {
           options={{
             tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
           }}
-          component={Weiteres}
+          //Hier ist normal component={Weiteres}
+          //LoginScreen ist eingefügt zum Testen -> Weiterleitung zum RegisterScreen funktioniert noch nicht
+          component={LoginScreen}
         />
         <Tab.Screen name="Entry Debug" component={WelcomeScreen} />
       </Tab.Navigator>
