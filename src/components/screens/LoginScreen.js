@@ -70,7 +70,7 @@ import * as firebase from "firebase";
                   onPress={() => this.props.navigation.navigate("Register")}
               >
                   <Text style={{ color: "#414959", fontSize: 13 }}>
-                      New to SocialApp? <Text style={{ fontWeight: "500", fontStyle: "italic", color: "orange" }}>Sign Up</Text>
+                      New to ScanIIS App? <Text style={{ fontWeight: "500", fontStyle: "italic", color: "orange" }}>Sign Up</Text>
                   </Text>
               </TouchableOpacity>
           </View>
