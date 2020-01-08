@@ -17,6 +17,9 @@ import Einkaufsliste from "./src/components/screens/Einkaufsliste";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
+//Firebase Import
+import * as firebase from 'firebase';
+
 //---------- Database Connection Start ----------
 var firebaseConfig = {
   apiKey: "AIzaSyBACmie-LjmzgzCxD-zS-sOZCJB5uof3YU",
@@ -32,8 +35,8 @@ if (!firebase.app.length) {
   firebase.initializeApp(firebaseConfig);
   console.log("Verbindung zu " + firebaseConfig.databaseURL + " hergestellt!");
 } else {
-  console.log("Verbindung zur Datenbank fehlgeschlagen!");
-}
+  console.log("Verbindung zur Datenbank fehlgeschlagen!!!");
+} 
 
 //---------- Database Connection End -------------
 
