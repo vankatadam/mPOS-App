@@ -31,17 +31,14 @@ import * as firebase from "firebase";
           .catch(error => this.setState({ errorMessage: error.message }));
   };
   
+  //Currently not Working! Needs Fix!
   onResetPasswordPressed = () => {
-      const { email, password } = this.state;
+      const { email } = this.state;
 
-      if (email !== null) {
         firebase
         .auth()
         .sendPasswordResetEmail(email)
         .catch(error => this.setState({ errorMessage: error.message }));
-      } else {
-          alert("Geben Sie Ihre Email-Adresse ein!");
-      } 
   }
   
 
