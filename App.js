@@ -9,10 +9,12 @@ import {
 } from "react-native";
 import { NavigationNativeContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+
 //Import der Login-/Register-Screens
 import LoginScreen from "./src/components/screens/LoginScreen";
 import RegisterScreen from "./src/components/screens/RegisterScreen";
 // ---------------------------------
+
 import WelcomeScreen from "./src/components/screens/WelcomeScreen";
 import HomeScreen from "./src/components/screens/HomeScreen";
 import Warenkorb from "./src/components/screens/Warenkorb";
@@ -36,11 +38,8 @@ var firebaseConfig = {
   measurementId: "G-KKZNDY8S6J"
 };
 
-var fireConnEstablished = false;
-
-if (!firebase.app.length) {
+if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
-  fireConnEstablished = true;
   console.log("Verbindung zu " + firebaseConfig.databaseURL + " hergestellt!");
 } else {
   console.log("Verbindung zur Datenbank fehlgeschlagen!!!");

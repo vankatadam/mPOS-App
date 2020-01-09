@@ -21,12 +21,29 @@ import * as firebase from "firebase";
 
   onLoginPressed = () => {
       const { email, password } = this.state;
+    
+        //TESTAUSGABE DER LOGINDATEN => DELETE BEFORE PUBLISHING
+        console.log({email, password});
 
       firebase
           .auth()
           .signInWithEmailAndPassword(email, password)
           .catch(error => this.setState({ errorMessage: error.message }));
   };
+  
+  onResetPasswordPressed = () => {
+      const { email, password } = this.state;
+
+      if (email !== null) {
+        firebase
+        .auth()
+        .sendPasswordResetEmail(email)
+        .catch(error => this.setState({ errorMessage: error.message }));
+      } else {
+          alert("Geben Sie Ihre Email-Adresse ein!");
+      } 
+  }
+  
 
   render() {
       return (
@@ -70,6 +87,15 @@ import * as firebase from "firebase";
               >
                   <Text style={{ color: "#414959", fontSize: 13 }}>
                       New to ScanIIS App? <Text style={{ fontWeight: "500", fontStyle: "italic", color: "orange" }}>Sign Up</Text>
+                  </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                  style={{ alignSelf: "center", marginTop: 32 }}
+                  
+              >
+                  <Text style={{ color: "#414959", fontSize: 13 }}>
+                      Forgot Password? <Text style={{ fontWeight: "500", fontStyle: "italic", color: "orange" }}>Reset it here!</Text>
                   </Text>
               </TouchableOpacity>
           </View>
