@@ -29,6 +29,9 @@ import * as firebase from "firebase";
           .auth()
           .signInWithEmailAndPassword(email, password)
           .catch(error => this.setState({ errorMessage: error.message }));
+
+          //Zurücksetzen der Felder
+          //this.setState({ email: "", password: ""});
   };
   
   //Currently not Working! Needs Fix!
