@@ -43,7 +43,7 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
   console.log("Verbindung zu " + firebaseConfig.databaseURL + " hergestellt!");
 } else {
-  console.log("Verbindung zur Datenbank fehlgeschlagen!!!");
+  console.log("Verbindung zu " + firebaseConfig.databaseURL + " besteht bereits!");
 } 
 
 //---------- Database Connection End -------------
@@ -71,7 +71,7 @@ const OnboardingStack = createStackNavigator({
 });
 
 /*
-export default createAppContainer(
+var appContainer = createAppContainer(
   createSwitchNavigator(
     {
       Onboarding: WelcomeScreen,
