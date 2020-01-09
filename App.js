@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { NavigationNativeContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-//import { createAppContainer, createSwitchNavigator } from 'react-navigation'; 
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'; 
 
 //Import der Login-/Register-Screens
 import LoginScreen from "./src/components/screens/LoginScreen";
@@ -67,14 +67,14 @@ const AuthStack = createStackNavigator({
 
 //Screens für das Onboarding
 const OnboardingStack = createStackNavigator({
-  Onboarding: WelcomeScreen 
+  Onboarding: WelcomeScreen, 
 });
 
 /*
 export default createAppContainer(
   createSwitchNavigator(
     {
-      Onboarding: OnboardingStack,
+      Onboarding: WelcomeScreen,
       App: AppStack,
       Auth: AuthStack
     },
