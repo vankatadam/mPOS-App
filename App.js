@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { NavigationNativeContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+//import { createAppContainer, createSwitchNavigator } from 'react-navigation'; 
 
 //Import der Login-/Register-Screens
 import LoginScreen from "./src/components/screens/LoginScreen";
@@ -47,12 +48,45 @@ if (!firebase.apps.length) {
 
 //---------- Database Connection End -------------
 
+//Untere Navigationsleiste
 const Tab = createBottomTabNavigator();
 
-function App() {
-  //Globale Flag für das Anzeigen des Onboardings, wird false nach einmaligem Anzeigen
-  const flagOnboarding = false;
+//Screens für die App
+const AppStack = createStackNavigator({
+  Home: HomeScreen,
+  Liste: Einkaufsliste,
+  Warenkorb: Warenkorb,
+  Weiteres: Weiteres
+});
 
+//Screens für die Authentifizierung
+const AuthStack = createStackNavigator({
+  Login: LoginScreen,
+  Register: RegisterScreen
+});
+
+//Screens für das Onboarding
+const OnboardingStack = createStackNavigator({
+  Onboarding: WelcomeScreen 
+});
+
+/*
+export default createAppContainer(
+  createSwitchNavigator(
+    {
+      Onboarding: OnboardingStack,
+      App: AppStack,
+      Auth: AuthStack
+    },
+    {
+      initialRouteName: "Onboarding",
+    },
+  )
+);
+*/
+
+
+function App() {
   return (
     <NavigationNativeContainer>
       <Tab.Navigator>
