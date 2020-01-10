@@ -62,7 +62,7 @@ export default class Onboardings extends Component {
     StatusBar.setHidden(true);
   }
   render() {
-    return <AppContainer />;
+    return <NavigationNativeContainer />;
   }
 }
 AppRegistry.registerComponent("Onboarding", () => Onboarding);
