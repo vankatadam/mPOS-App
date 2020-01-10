@@ -11,15 +11,11 @@ import {
 } from "react-native";
 import { NavigationNativeContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-<<<<<<< HEAD
-import { createAppContainer, createSwitchNavigator } from "react-navigation";
-=======
 import {
   createAppContainer,
   createSwitchNavigator,
   StackActions
 } from "react-navigation";
->>>>>>> dfa5b644c9c68de9521e867b66e84efb1eb0ca04
 
 //Import der Login-/Register-Screens
 import LoginScreen from "./src/components/screens/LoginScreen";
@@ -36,10 +32,6 @@ import { Ionicons } from "@expo/vector-icons";
 
 //Firebase Import
 import * as firebase from "firebase";
-<<<<<<< HEAD
-=======
-
->>>>>>> dfa5b644c9c68de9521e867b66e84efb1eb0ca04
 const Stack = createStackNavigator();
 
 //---------- Database Connection Start ----------
@@ -94,11 +86,7 @@ const AuthStack = createStackNavigator({
 
 //Screens für das Onboarding
 const OnboardingStack = createStackNavigator({
-<<<<<<< HEAD
-  Welcome: WelcomeScreen
-=======
   Onboarding: WelcomeScreen
->>>>>>> dfa5b644c9c68de9521e867b66e84efb1eb0ca04
 });
 const AppSwitchNavigator = createSwitchNavigator({
   Welcome: { screen: WelcomeScreen },
