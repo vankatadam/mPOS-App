@@ -8,11 +8,12 @@ import {
   Dimensions
 } from "react-native";
 import { NavigationNativeContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import {
-  createStackNavigator,
-  StackCardAnimationContext
-} from "@react-navigation/stack";
-import { createAppContainer, createSwitchNavigator } from "react-navigation";
+  createAppContainer,
+  createSwitchNavigator,
+  StackActions
+} from "react-navigation";
 
 //Import der Login-/Register-Screens
 import LoginScreen from "./src/components/screens/LoginScreen";
