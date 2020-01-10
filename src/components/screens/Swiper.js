@@ -14,9 +14,7 @@ import {
   View // Container component
 } from "react-native";
 import Button from "./Button";
-import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
-import HomeScreen from "./HomeScreen";
 
 // Detect screen width and height
 const { width, height } = Dimensions.get("window");
@@ -247,8 +245,10 @@ export default class OnboardingScreens extends Component {
   /**
    * Render Continue or Done button
    */
-  renderButton = () => {
+
+  renderButton = navigate => {
     const lastScreen = this.state.index === this.state.total - 1;
+
     return (
       <View
         pointerEvents="box-none"
@@ -259,7 +259,7 @@ export default class OnboardingScreens extends Component {
           // TODO: Add a handler that would send a user to your app after onboarding is complete
           <Button
             text="Start Now"
-            onPress={() => this.props.navigation.navigate("Home")}
+            onPress={() => this.props.navigation.navigate("HomeScreen")}
           />
         ) : (
           // Or this one otherwise
