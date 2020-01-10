@@ -135,6 +135,7 @@ function App() {
             </Tab.Navigator>
           )}
         />
+        <Stack.Screen name="Register" component={RegisterScreen} />
       </Stack.Navigator>
     </NavigationNativeContainer>
   );
