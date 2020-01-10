@@ -147,10 +147,12 @@ function App() {
                 //LoginScreen ist eingefügt zum Testen -> Weiterleitung zum RegisterScreen funktioniert noch nicht
                 component={LoginScreen}
               />
-              <Tab.Screen name="Entry Debug" component={WelcomeScreen} />
             </Tab.Navigator>
           )}
         />
+        <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Onboarding" component={WelcomeScreen} />
       </Stack.Navigator>
     </NavigationNativeContainer>
   );
