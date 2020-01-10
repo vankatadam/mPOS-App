@@ -8,8 +8,11 @@ import {
   Dimensions
 } from "react-native";
 import { NavigationNativeContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createAppContainer, createSwitchNavigator } from 'react-navigation'; 
+import {
+  createStackNavigator,
+  StackCardAnimationContext
+} from "@react-navigation/stack";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
 //Import der Login-/Register-Screens
 import LoginScreen from "./src/components/screens/LoginScreen";
@@ -25,7 +28,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
 //Firebase Import
-import * as firebase from 'firebase';
+import * as firebase from "firebase";
+
+const Stack = createStackNavigator();
 
 //---------- Database Connection Start ----------
 var firebaseConfig = {
@@ -43,8 +48,10 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
   console.log("Verbindung zu " + firebaseConfig.databaseURL + " hergestellt!");
 } else {
-  console.log("Verbindung zu " + firebaseConfig.databaseURL + " besteht bereits!");
-} 
+  console.log(
+    "Verbindung zu " + firebaseConfig.databaseURL + " besteht bereits!"
+  );
+}
 
 //---------- Database Connection End -------------
 
@@ -67,7 +74,7 @@ const AuthStack = createStackNavigator({
 
 //Screens für das Onboarding
 const OnboardingStack = createStackNavigator({
-  Onboarding: WelcomeScreen, 
+  Onboarding: WelcomeScreen
 });
 
 /*
@@ -85,43 +92,49 @@ var appContainer = createAppContainer(
 );
 */
 
-
 function App() {
   return (
     <NavigationNativeContainer>
-      <Tab.Navigator>
-        <Tab.Screen
-          name="HomeScreen"
-          options={{
-            tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
-          }}
-          component={HomeScreen}
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={() => (
+            <Tab.Navigator>
+              <Tab.Screen
+                name="HomeScreen"
+                options={{
+                  tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
+                }}
+                component={HomeScreen}
+              />
+              <Tab.Screen
+                name="Einkaufsliste"
+                options={{
+                  tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
+                }}
+                component={Einkaufsliste}
+              />
+              <Tab.Screen
+                name="Warenkorb"
+                options={{
+                  tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
+                }}
+                component={Warenkorb}
+              />
+              <Tab.Screen
+                name="Weiteres"
+                options={{
+                  tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
+                }}
+                //Hier ist normal component={Weiteres}
+                //LoginScreen ist eingefügt zum Testen -> Weiterleitung zum RegisterScreen funktioniert noch nicht
+                component={LoginScreen}
+              />
+              <Tab.Screen name="Entry Debug" component={WelcomeScreen} />
+            </Tab.Navigator>
+          )}
         />
-        <Tab.Screen
-          name="Einkaufsliste"
-          options={{
-            tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
-          }}
-          component={Einkaufsliste}
-        />
-        <Tab.Screen
-          name="Warenkorb"
-          options={{
-            tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
-          }}
-          component={Warenkorb}
-        />
-        <Tab.Screen
-          name="Weiteres"
-          options={{
-            tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
-          }}
-          //Hier ist normal component={Weiteres}
-          //LoginScreen ist eingefügt zum Testen -> Weiterleitung zum RegisterScreen funktioniert noch nicht
-          component={LoginScreen}
-        />
-        <Tab.Screen name="Entry Debug" component={WelcomeScreen} />
-      </Tab.Navigator>
+      </Stack.Navigator>
     </NavigationNativeContainer>
   );
 }
