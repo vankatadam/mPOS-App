@@ -131,7 +131,6 @@ function App() {
                 //LoginScreen ist eingefügt zum Testen -> Weiterleitung zum RegisterScreen funktioniert noch nicht
                 component={LoginScreen}
               />
-              <Tab.Screen name="Entry Debug" component={WelcomeScreen} />
             </Tab.Navigator>
           )}
         />
