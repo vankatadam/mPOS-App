@@ -1,15 +1,17 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, Component } from "react";
 import {
   View,
   Text,
   ScrollView,
   SafeAreaView,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  AppRegistry,
+  StatusBar
 } from "react-native";
 import { NavigationNativeContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createAppContainer, createSwitchNavigator } from 'react-navigation'; 
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
 //Import der Login-/Register-Screens
 import LoginScreen from "./src/components/screens/LoginScreen";
@@ -25,7 +27,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
 //Firebase Import
-import * as firebase from 'firebase';
+import * as firebase from "firebase";
+const Stack = createStackNavigator();
 
 //---------- Database Connection Start ----------
 var firebaseConfig = {
@@ -43,10 +46,22 @@ if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
   console.log("Verbindung zu " + firebaseConfig.databaseURL + " hergestellt!");
 } else {
-  console.log("Verbindung zu " + firebaseConfig.databaseURL + " besteht bereits!");
-} 
+  console.log(
+    "Verbindung zu " + firebaseConfig.databaseURL + " besteht bereits!"
+  );
+}
 
 //---------- Database Connection End -------------
+
+export default class Onboardings extends Component {
+  componentDidMount() {
+    StatusBar.setHidden(true);
+  }
+  render() {
+    return <AppContainer />;
+  }
+}
+AppRegistry.registerComponent("Onboarding", () => Onboarding);
 
 //Untere Navigationsleiste
 const Tab = createBottomTabNavigator();
@@ -67,8 +82,13 @@ const AuthStack = createStackNavigator({
 
 //Screens für das Onboarding
 const OnboardingStack = createStackNavigator({
-  Onboarding: WelcomeScreen, 
+  Welcome: WelcomeScreen
 });
+const AppSwitchNavigator = createSwitchNavigator({
+  Welcome: { screen: WelcomeScreen },
+  Home: { screen: HomeScreen }
+});
+const AppContainer = createAppContainer(AppSwitchNavigator);
 
 /*
 var appContainer = createAppContainer(
@@ -84,7 +104,6 @@ var appContainer = createAppContainer(
   )
 );
 */
-
 
 function App() {
   return (
@@ -125,5 +144,3 @@ function App() {
     </NavigationNativeContainer>
   );
 }
-
-export default App;
