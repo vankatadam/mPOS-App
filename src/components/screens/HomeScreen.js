@@ -13,17 +13,14 @@ import { Ionicons } from "@expo/vector-icons";
 import { screenWidth } from "../screenWidth";
 import Constants from "expo-constants";
 
-export default class HomeScreen   {
-  
+export default class HomeScreen extends Component {
   render() {
-  return (
-    <View>
-      <Text style={{ textAlign: "center" }}>HomeScreen</Text>
-    </View>
-  );
-}}
+    return (
+      <View>
+        <Text style={{ textAlign: "center" }}>HomeScreen</Text>
+      </View>
+    );
+  }
+}
 const styles = StyleSheet.create({});
-
-
-
 AppRegistry.registerComponent("Home", () => HomeScreen);

@@ -1,74 +1,143 @@
-import React, { Component } from "react";
+import React, { useState, useCallback, Component } from "react";
+
 import {
-  StyleSheet, // CSS-like styles
-  Text, // Renders text
-  View, // Container component
-  Button
+  View,
+  Text,
+  ScrollView,
+  SafeAreaView,
+  StyleSheet,
+  Dimensions
 } from "react-native";
+import { TextInput, TouchableOpacity } from "react-native";
+import TutorialView from "../TutorialView";
+
 import { Ionicons } from "@expo/vector-icons";
-import Swiper from "./Swiper";
+
+import { screenWidth } from "../screenWidth";
+
+import Constants from "expo-constants";
+
+import Button from "./Button";
+import { NavigationNativeContainer } from "@react-navigation/native";
+
+import {
+  createStackNavigator,
+  StackCardAnimationContext
+} from "@react-navigation/stack";
+
+const Stack = createStackNavigator();
 
 export default function WelcomeScreen({ navigation }) {
+  const propsForScrollview = {
+    horizontal: true,
+
+    pagingEnabled: true,
+
+    snapToEnd: false
+  };
+
+  const [activePoint, setActivePoint] = useState(1);
+
+  const _onScroll = useCallback(({ nativeEvent }) => {
+    const newActivePoint = nativeEvent.contentOffset.x / screenWidth;
+
+    //console.warn(nativeEvent.contentOffset.x);
+
+    if (newActivePoint < 0.5) {
+      setActivePoint(1);
+    } else if (newActivePoint < 1.5) {
+      setActivePoint(2);
+    } else {
+      setActivePoint(3);
+    }
+  });
+
   return (
-    <Swiper navigation={navigation}>
-      {/* First screen */}
-      <View style={[styles.slide, { backgroundColor: "#FFFFFF" }]}>
-        <Ionicons name="ios-barcode" {...iconStyles} />
-        <Text style={styles.header}>WILLKOMMEN</Text>
-        <Text style={styles.text}>Willkommen auf der geilen mPOS APP</Text>
+    <>
+      <ScrollView
+        style={styles.scrollView}
+        {...propsForScrollview}
+        onScroll={_onScroll}
+        showsHorizontalScrollIndicator={false}
+      >
+        <TutorialView text="Produkt scannen und direkt online bezahlen">
+          <Ionicons name="ios-barcode" size={150} />
+        </TutorialView>
+
+        <TutorialView text="Einkaufliste erstellen und effizient bezahlen">
+          <Ionicons name="ios-list" size={150} />
+        </TutorialView>
+
+        <TutorialView text="Kassenbelege speichern">
+          <Ionicons name="md-cash" size={150} />
+          <Button
+            text="start now"
+            onPress={() => navigation.navigate("HomeScreen")}
+          />
+        </TutorialView>
+      </ScrollView>
+
+      <View style={styles.pointsView}>
+        <View
+          style={activePoint === 1 ? styles.activePoint : styles.point}
+        ></View>
+
+        <View
+          style={activePoint === 2 ? styles.activePoint : styles.point}
+        ></View>
+
+        <View
+          style={activePoint === 3 ? styles.activePoint : styles.point}
+        ></View>
       </View>
-      {/* Second screen */}
-      <View style={[styles.slide, { backgroundColor: "#FFFFFF" }]}>
-        <Ionicons name="ios-barcode" {...iconStyles} />
-        <Text style={styles.header}>BARCODE</Text>
-        <Text style={styles.text}>
-          Produkt scannen und direkt online bezahlen
-        </Text>
-      </View>
-      {/* Third screen */}
-      <View style={[styles.slide, { backgroundColor: "#FFFFFF" }]}>
-        <Ionicons name="ios-list" {...iconStyles} />
-        <Text style={styles.header}>LISTE</Text>
-        <Text style={styles.text}>
-          Einkaufliste erstellen und effizient bezahlen
-        </Text>
-      </View>
-      {/* Third screen */}
-      <View style={[styles.slide, { backgroundColor: "#FFFFFF" }]}>
-        <Ionicons name="md-cash" {...iconStyles} />
-        <Text style={styles.header}>BELEGE</Text>
-        <Text style={styles.text}>Kassenbelege speichern</Text>
-        <Button
-          title="blabla"
-          onPress={() => navigation.navigate("HomeScreen")}
-        />
-      </View>
-    </Swiper>
+    </>
   );
 }
-const iconStyles = {
-  size: 150,
-  color: "#8A8F9E"
-};
+
 const styles = StyleSheet.create({
-  // Slide styles
-  slide: {
-    flex: 1, // Take up all screen
-    justifyContent: "center", // Center vertically
-    alignItems: "center" // Center horizontally
+  container: {
+    flex: 1,
+
+    marginTop: Constants.statusBarHeight
   },
-  // Header styles
-  header: {
-    color: "#8A8F9E",
-    fontSize: 30,
-    fontWeight: "bold",
-    marginVertical: 15
+
+  scrollView: {},
+
+  pointsView: {
+    position: "absolute",
+
+    bottom: 12,
+
+    flexDirection: "row",
+
+    width: "100%",
+
+    height: 15,
+
+    justifyContent: "center"
   },
-  // Text below header
-  text: {
-    color: "#8A8F9E",
-    fontSize: 18,
-    marginHorizontal: 40,
-    textAlign: "center"
+
+  point: {
+    borderRadius: 6,
+
+    backgroundColor: "rgba(55,55,55,0.2)",
+
+    width: 12,
+
+    height: 12,
+
+    margin: 4
+  },
+
+  activePoint: {
+    borderRadius: 6,
+
+    backgroundColor: "rgba(55,55,55,0.8)",
+
+    width: 12,
+
+    height: 12,
+
+    margin: 4
   }
 });
