@@ -47,8 +47,10 @@ export default function WelcomeScreen({ navigation }) {
       setActivePoint(1);
     } else if (newActivePoint < 1.5) {
       setActivePoint(2);
-    } else {
+    } else if (newActivePoint < 2.5) {
       setActivePoint(3);
+    } else {
+      setActivePoint(4);
     }
   });
 
@@ -60,19 +62,22 @@ export default function WelcomeScreen({ navigation }) {
         onScroll={_onScroll}
         showsHorizontalScrollIndicator={false}
       >
+        <TutorialView text="Herzlich Willkommen">
+          <Ionicons name="ios-barcode" {...iconStyles} />
+        </TutorialView>
         <TutorialView text="Produkt scannen und direkt online bezahlen">
-          <Ionicons name="ios-barcode" size={150} />
+          <Ionicons name="ios-barcode" {...iconStyles} />
         </TutorialView>
 
         <TutorialView text="Einkaufliste erstellen und effizient bezahlen">
-          <Ionicons name="ios-list" size={150} />
+          <Ionicons name="ios-list" {...iconStyles} />
         </TutorialView>
 
         <TutorialView text="Kassenbelege speichern">
-          <Ionicons name="md-cash" size={150} />
+          <Ionicons name="md-cash" {...iconStyles} />
           <Button
             text="start now"
-            onPress={() => navigation.navigate("HomeScreen")}
+            onPress={() => navigation.navigate("Home")}
           />
         </TutorialView>
       </ScrollView>
@@ -89,10 +94,19 @@ export default function WelcomeScreen({ navigation }) {
         <View
           style={activePoint === 3 ? styles.activePoint : styles.point}
         ></View>
+        <View
+          style={activePoint === 4 ? styles.activePoint : styles.point}
+        ></View>
       </View>
     </>
   );
 }
+const iconStyles = {
+  size: 200,
+
+  color: "#ff6600",
+  alignItems: "center"
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -102,7 +116,12 @@ const styles = StyleSheet.create({
   },
 
   scrollView: {},
+  text: {
+    fontSize: 30,
+    textAlign: "center",
 
+    color: "#000000"
+  },
   pointsView: {
     position: "absolute",
 
@@ -132,7 +151,7 @@ const styles = StyleSheet.create({
   activePoint: {
     borderRadius: 6,
 
-    backgroundColor: "rgba(55,55,55,0.8)",
+    backgroundColor: "#ff6600",
 
     width: 12,
 
