@@ -1,5 +1,11 @@
 import React from "react";
-import ReactNative, { StyleSheet, Dimensions, View, Text } from "react-native";
+import ReactNative, {
+  StyleSheet,
+  Dimensions,
+  View,
+  Text,
+  TouchableOpacity
+} from "react-native";
 import { screenWidth } from "./screenWidth";
 
 /**
@@ -17,12 +23,15 @@ export default function TutorialView(props) {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 24,
-    textAlign: "center"
+    fontSize: 30,
+    textAlign: "center",
+
+    color: "#000000"
   },
   viewStartScreen: {
     width: screenWidth,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    borderBottomEndRadius: 100
   }
 });

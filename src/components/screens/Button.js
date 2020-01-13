@@ -28,13 +28,20 @@ const styles = StyleSheet.create({
   button: {
     borderRadius: 50, // Rounded border
     borderWidth: 2, // 2 point border widht
-    borderColor: "#8A8F9E", // White colored border
-    paddingHorizontal: 50, // Horizontal padding
-    paddingVertical: 10 // Vertical padding
+    borderColor: "#ff6600", // White colored border
+    paddingHorizontal: 40, // Horizontal padding
+    paddingVertical: 10, // Vertical padding
+    backgroundColor: "#ff6600",
+
+    bottom: 200,
+    top: 0,
+    left: 0,
+    alignItems: "center",
+    flex: 0
   },
   // Button text
   text: {
-    color: "#8A8F9E",
+    color: "#ffffff",
     fontWeight: "bold"
   }
 });

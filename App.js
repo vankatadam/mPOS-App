@@ -6,7 +6,8 @@ import {
   ScrollView,
   SafeAreaView,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  AsyncStorage
 } from "react-native";
 
 import { NavigationNativeContainer } from "@react-navigation/native";
@@ -82,6 +83,46 @@ if (!firebase.apps.length) {
 
 const Tab = createBottomTabNavigator();
 
+const TabNavi = () => (
+  <Tab.Navigator>
+    <Tab.Screen
+      name="HomeScreen"
+      options={{
+        tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
+      }}
+      component={HomeScreen}
+    />
+
+    <Tab.Screen
+      name="Einkaufsliste"
+      options={{
+        tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
+      }}
+      component={Einkaufsliste}
+    />
+
+    <Tab.Screen
+      name="Warenkorb"
+      options={{
+        tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
+      }}
+      component={Warenkorb}
+    />
+
+    <Tab.Screen
+      name="Weiteres"
+      options={{
+        tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
+      }}
+      //Hier ist normal component={Weiteres}
+
+      //LoginScreen ist eingefügt zum Testen -> Weiterleitung zum RegisterScreen funktioniert noch nicht
+
+      component={LoginScreen}
+    />
+  </Tab.Navigator>
+);
+
 //Screens für die App
 
 const AppStack = createStackNavigator({
@@ -142,51 +183,21 @@ function App() {
     <NavigationNativeContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Home"
-          component={() => (
-            <Tab.Navigator>
-              <Tab.Screen
-                name="HomeScreen"
-                options={{
-                  tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
-                }}
-                component={HomeScreen}
-              />
-
-              <Tab.Screen
-                name="Einkaufsliste"
-                options={{
-                  tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
-                }}
-                component={WelcomeScreen}
-              />
-
-              <Tab.Screen
-                name="Warenkorb"
-                options={{
-                  tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
-                }}
-                component={Warenkorb}
-              />
-
-              <Tab.Screen
-                name="Weiteres"
-                options={{
-                  tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
-                }}
-                //Hier ist normal component={Weiteres}
-
-                //LoginScreen ist eingefügt zum Testen -> Weiterleitung zum RegisterScreen funktioniert noch nicht
-
-                component={LoginScreen}
-              />
-            </Tab.Navigator>
-          )}
+          options={({}) => ({
+            headerShown: false
+          })}
+          component={WelcomeScreen}
         />
-
+        <Stack.Screen
+          options={({}) => ({
+            headerTitleAlign: "center",
+            headerLeft: null
+          })}
+          name="Home"
+          component={TabNavi}
+        />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Welcome" component={WelcomeScreen} />
       </Stack.Navigator>
     </NavigationNativeContainer>
   );
