@@ -100,7 +100,10 @@ export default class LoginScreen extends React.Component {
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{ alignSelf: "center", marginTop: 32 }}>
+        <TouchableOpacity
+          style={{ alignSelf: "center", marginTop: 32 }}
+          onPress={() => this.onResetPasswordPressed()}
+        >
           <Text style={{ color: "#414959", fontSize: 13 }}>
             Forgot Password?{" "}
             <Text
