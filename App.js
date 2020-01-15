@@ -181,7 +181,7 @@ var appContainer = createAppContainer(
 function App() {
   return (
     <NavigationNativeContainer>
-      <Stack.Navigator>
+      <Stack.Navigator headerMode="none">
         <Stack.Screen
           options={({}) => ({
             headerShown: false
