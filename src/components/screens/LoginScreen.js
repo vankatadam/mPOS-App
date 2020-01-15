@@ -5,7 +5,8 @@ import {
   ScrollView,
   SafeAreaView,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  Alert
 } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native";
 
@@ -17,6 +18,10 @@ export default class LoginScreen extends React.Component {
     email: "",
     password: "",
     errorMessage: null
+  };
+
+  resetStatesInForm = () => {
+    this.setState({ email: "", password: "", errorMessage: "" });
   };
 
   onLoginPressed = () => {
@@ -41,6 +46,17 @@ export default class LoginScreen extends React.Component {
     firebase
       .auth()
       .sendPasswordResetEmail(email)
+      /*.then(
+        Alert.alert(
+          "Reset Password",
+          "An Email to has been sent!",
+          [{ text: "OK", onPress: this.resetStatesInForm() }],
+          //Für Android:
+          { onDismiss: this.resetStatesInForm() },
+          //Android Ende
+          { cancelable: true }
+        )
+      ) */
       .catch(error => this.setState({ errorMessage: error.message }));
   };
 
