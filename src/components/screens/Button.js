@@ -32,12 +32,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40, // Horizontal padding
     paddingVertical: 10, // Vertical padding
     backgroundColor: "#ff6600",
-
-    bottom: 200,
+    bottom: 0,
     top: 0,
     left: 0,
-    alignItems: "center",
-    flex: 0
+    alignItems: "center"
   },
   // Button text
   text: {

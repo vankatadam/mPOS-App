@@ -4,7 +4,9 @@ import ReactNative, {
   Dimensions,
   View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  Image,
+  ImageBackground
 } from "react-native";
 import { screenWidth } from "./screenWidth";
 
