@@ -6,7 +6,8 @@ import {
   ScrollView,
   SafeAreaView,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  Image
 } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native";
 import TutorialView from "../TutorialView";
@@ -63,7 +64,10 @@ export default function WelcomeScreen({ navigation }) {
         showsHorizontalScrollIndicator={false}
       >
         <TutorialView text="Herzlich Willkommen">
-          <Ionicons name="ios-barcode" {...iconStyles} />
+          <Image
+            source={require("../../../assets/mPOS.jpg")}
+            style={styles.image}
+          />
         </TutorialView>
         <TutorialView text="Produkt scannen und direkt online bezahlen">
           <Ionicons name="ios-barcode" {...iconStyles} />
@@ -76,7 +80,7 @@ export default function WelcomeScreen({ navigation }) {
         <TutorialView text="Kassenbelege speichern">
           <Ionicons name="md-cash" {...iconStyles} />
           <Button
-            text="start now"
+            text="Los gehts!"
             onPress={() => navigation.navigate("Home")}
           />
         </TutorialView>
@@ -145,7 +149,7 @@ const styles = StyleSheet.create({
 
     height: 12,
 
-    margin: 4
+    margin: 8
   },
 
   activePoint: {
@@ -158,5 +162,10 @@ const styles = StyleSheet.create({
     height: 12,
 
     margin: 4
+  },
+  image: {
+    width: 140,
+    height: 140,
+    marginVertical: 30
   }
 });
