@@ -7,7 +7,9 @@ import {
   SafeAreaView,
   StyleSheet,
   Dimensions,
-  Image
+  Image,
+  ImageBackground,
+  AsyncStorage
 } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native";
 import TutorialView from "../TutorialView";
@@ -25,6 +27,7 @@ import {
   createStackNavigator,
   StackCardAnimationContext
 } from "@react-navigation/stack";
+import { State } from "react-native-gesture-handler";
 
 const Stack = createStackNavigator();
 
@@ -54,7 +57,10 @@ export default function WelcomeScreen({ navigation }) {
       setActivePoint(4);
     }
   });
-
+  _enter = async () => {
+    await AsyncStorage.setItem("isEnter", "1");
+    navigation.navigate("Home");
+  };
   return (
     <>
       <ScrollView
@@ -63,12 +69,17 @@ export default function WelcomeScreen({ navigation }) {
         onScroll={_onScroll}
         showsHorizontalScrollIndicator={false}
       >
-        <TutorialView text="Herzlich Willkommen">
-          <Image
-            source={require("../../../assets/mPOS.jpg")}
-            style={styles.image}
-          />
-        </TutorialView>
+        <ImageBackground
+          source={require("../../../assets/mPOSBackground.jpg")}
+          style={styles.viewStartScreen}
+        >
+          <TutorialView text="Herzlich Willkommen">
+            <Image
+              source={require("../../../assets/mPOS.jpg")}
+              style={styles.image}
+            />
+          </TutorialView>
+        </ImageBackground>
         <TutorialView text="Produkt scannen und direkt online bezahlen">
           <Ionicons name="ios-barcode" {...iconStyles} />
         </TutorialView>
@@ -79,10 +90,7 @@ export default function WelcomeScreen({ navigation }) {
 
         <TutorialView text="Kassenbelege speichern">
           <Ionicons name="md-cash" {...iconStyles} />
-          <Button
-            text="Los gehts!"
-            onPress={() => navigation.navigate("Home")}
-          />
+          <Button text="Los gehts!" onPress={_enter} />
         </TutorialView>
       </ScrollView>
 
@@ -105,6 +113,7 @@ export default function WelcomeScreen({ navigation }) {
     </>
   );
 }
+
 const iconStyles = {
   size: 200,
 
@@ -129,7 +138,7 @@ const styles = StyleSheet.create({
   pointsView: {
     position: "absolute",
 
-    bottom: 12,
+    bottom: 30,
 
     flexDirection: "row",
 
@@ -161,11 +170,17 @@ const styles = StyleSheet.create({
 
     height: 12,
 
-    margin: 4
+    margin: 8
   },
   image: {
     width: 140,
     height: 140,
     marginVertical: 30
+  },
+  viewStartScreen: {
+    width: screenWidth,
+    alignItems: "center",
+    justifyContent: "center",
+    borderBottomEndRadius: 100
   }
 });
