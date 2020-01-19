@@ -7,7 +7,8 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
-  Alert
+  Alert,
+  AsyncStorage
 } from "react-native";
 import TutorialView from "../TutorialView";
 import { Ionicons } from "@expo/vector-icons";
@@ -36,15 +37,15 @@ export default function Einkaufsliste() {
       });
     } else {
       Alert.alert(
-        "Uppppppppppppsssssssss",
-        "Elemente der Einkaufsliste müssen mindestens einen Buchstaben enthalten",
+        "Error",
+        "Lebensmittel der Einkaufsliste müssen mindestens einen Buchstaben enthalten",
         [{ text: "Verstanden", onPress: () => console.log("alert closed") }]
       );
     }
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.header}>Einkaufsliste</Text>
       <View style={styles.content}>
         <AddItem submitHandler={submitHandler} />
@@ -57,7 +58,7 @@ export default function Einkaufsliste() {
           />
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -78,10 +79,10 @@ const styles = StyleSheet.create({
   },
   header: {
     textAlign: "center",
-    color: "#fff",
-    fontSize: 30,
+    color: "#ff6600",
+    fontSize: 20,
     fontWeight: "bold",
-    backgroundColor: "#ff6600",
-    height: 50
+    backgroundColor: "#fff0e6",
+    height: 30
   }
 });
