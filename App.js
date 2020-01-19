@@ -88,7 +88,7 @@ const TabNavi = () => (
     <Tab.Screen
       name="HomeScreen"
       options={{
-        tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
+        tabBarIcon: () => <Ionicons name="ios-home" size={25} color="#ff6600" />
       }}
       component={HomeScreen}
     />
@@ -96,7 +96,7 @@ const TabNavi = () => (
     <Tab.Screen
       name="Einkaufsliste"
       options={{
-        tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
+        tabBarIcon: () => <Ionicons name="ios-list" size={25} color="#ff6600" />
       }}
       component={Einkaufsliste}
     />
@@ -104,7 +104,7 @@ const TabNavi = () => (
     <Tab.Screen
       name="Warenkorb"
       options={{
-        tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
+        tabBarIcon: () => <Ionicons name="md-cart" size={25} color="#ff6600" />
       }}
       component={Warenkorb}
     />
@@ -112,7 +112,7 @@ const TabNavi = () => (
     <Tab.Screen
       name="Weiteres"
       options={{
-        tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
+        tabBarIcon: () => <Ionicons name="ios-more" size={25} color="#ff6600" />
       }}
       //Hier ist normal
       component={Weiteres}
