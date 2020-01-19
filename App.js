@@ -114,11 +114,12 @@ const TabNavi = () => (
       options={{
         tabBarIcon: () => <Ionicons name="ios-barcode" size={25} />
       }}
-      //Hier ist normal component={Weiteres}
+      //Hier ist normal
+      component={Weiteres}
 
       //LoginScreen ist eingefügt zum Testen -> Weiterleitung zum RegisterScreen funktioniert noch nicht
 
-      component={LoginScreen}
+      // component={LoginScreen}
     />
   </Tab.Navigator>
 );
