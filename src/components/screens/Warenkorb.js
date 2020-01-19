@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   View,
   Text,
@@ -14,13 +14,50 @@ import { screenWidth } from "../screenWidth";
 import Constants from "expo-constants";
 import { withOrientation } from "react-navigation";
 import { TextInput } from "react-native-gesture-handler";
+import { BarCodeScanner } from "expo-barcode-scanner";
 
 export default function Warenkorb() {
+  const [hasPermission, setHasPermission] = useState(null);
+  const [scanned, setScanned] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await BarCodeScanner.requestPermissionsAsync();
+      setHasPermission(status === "granted");
+    })();
+  }, []);
+
+  const handleBarCodeScanned = ({ type, data }) => {
+    setScanned(true);
+    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+  };
+
+  if (hasPermission === null) {
+    return <Text>Requesting for camera permission</Text>;
+  }
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Warenkorb</Text>
       </View>
+
+      <BarCodeScanner
+        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+        style={styles.scanner}
+      />
+
+      {scanned && (
+        <TouchableOpacity
+          onPress={() => setScanned(false)}
+          style={[styles.button, { width: 200 }]}
+        >
+          <Text style={styles.buttonText}>Tap to Scan Again</Text>
+        </TouchableOpacity>
+      )}
 
       <View style={styles.searchBar}>
         <Ionicons name="ios-search" size={30} style={styles.icon} />
@@ -54,14 +91,17 @@ export default function Warenkorb() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+
+    alignItems: "center"
   },
   header: {
     backgroundColor: "#fff0e6",
     alignItems: "center",
     justifyContent: "center",
     borderBottomWidth: 2,
-    borderBottomColor: "#f2f2f2"
+    borderBottomColor: "#f2f2f2",
+    width: "100%"
   },
   headerText: {
     color: "#ff6600",
@@ -117,5 +157,11 @@ const styles = StyleSheet.create({
     height: 45,
     alignItems: "center",
     justifyContent: "center"
+  },
+  scanner: {
+    overflow: "hidden",
+    width: 260,
+    height: 200,
+    margin: 5
   }
 });
