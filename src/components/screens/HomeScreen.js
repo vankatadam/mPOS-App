@@ -4,6 +4,7 @@ import {
   Text,
   ScrollView,
   SafeAreaView,
+  TextInput,
   StyleSheet,
   Dimensions,
   AppRegistry,
@@ -12,45 +13,22 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import { Ionicons } from "@expo/vector-icons";
 
-export default function HomeScreen() {
-  const [hasPermission, setHasPermission] = useState(null);
-  const [scanned, setScanned] = useState(false);
-
-  useEffect(() => {
-    (async () => {
-      const { status } = await BarCodeScanner.requestPermissionsAsync();
-      setHasPermission(status === "granted");
-    })();
-  }, []);
-
-  const handleBarCodeScanned = ({ type, data }) => {
-    setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-  };
-
-  if (hasPermission === null) {
-    return <Text>Requesting for camera permission</Text>;
-  }
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
-  }
-
+export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
-      <BarCodeScanner
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        style={styles.scanner}
-      />
-
-      {scanned && (
-        <TouchableOpacity
-          onPress={() => setScanned(false)}
-          style={styles.button}
-        >
-          <Text>Tap to Scan Again</Text>
+      <View style={styles.searchBar}>
+        <Ionicons name="ios-search" size={30} style={styles.icon} />
+        <TextInput
+          style={styles.textInput}
+          placeholder=" produkt suchen"
+          placeholderTextColor="#999999"
+        ></TextInput>
+        <TouchableOpacity onPress={() => navigation.navigate("Warenkorb")}>
+          <Ionicons name="ios-barcode" size={40} style={styles.icon} />
         </TouchableOpacity>
-      )}
+      </View>
     </SafeAreaView>
   );
 }
@@ -74,6 +52,26 @@ const styles = StyleSheet.create({
     height: 52,
     alignItems: "center",
     justifyContent: "center"
+  },
+  searchBar: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start"
+  },
+  textInput: {
+    flex: 1,
+    color: "black",
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: "#ff6600",
+    backgroundColor: "white",
+    textAlignVertical: "center",
+    fontSize: 20,
+    height: 40
+  },
+  icon: {
+    padding: 5,
+    color: "#ff6600"
   }
 });
 AppRegistry.registerComponent("Home", () => HomeScreen);
