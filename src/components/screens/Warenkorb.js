@@ -66,9 +66,6 @@ export default function Warenkorb() {
           placeholder=" produkt suchen"
           placeholderTextColor="#999999"
         ></TextInput>
-        <TouchableOpacity>
-          <Ionicons name="ios-barcode" size={40} style={styles.icon} />
-        </TouchableOpacity>
       </View>
 
       <ScrollView style={styles.scrollContainer}>
@@ -131,7 +128,8 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     textAlignVertical: "center",
     fontSize: 20,
-    height: 40
+    height: 40,
+    marginRight: 5
   },
   footer: {
     alignItems: "center",
