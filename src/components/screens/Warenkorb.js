@@ -6,7 +6,8 @@ import {
   SafeAreaView,
   StyleSheet,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
+  FlatList
 } from "react-native";
 import TutorialView from "../TutorialView";
 import { Ionicons } from "@expo/vector-icons";
@@ -15,8 +16,26 @@ import Constants from "expo-constants";
 import { withOrientation } from "react-navigation";
 import { TextInput } from "react-native-gesture-handler";
 import { BarCodeScanner } from "expo-barcode-scanner";
+import EinkaufslisteItem from "../EinkaufslisteItem";
 
 export default function Warenkorb() {
+  //List Items
+  const [warenkorb, setWarenkorb] = useState([]);
+
+  const presshandler = key => {
+    setWarenkorb(prevWarenkorb => {
+      return prevWarenkorb.filter(todo => todo.key != key);
+    });
+  };
+  const scannedHandler = text => {
+    setWarenkorb(prevWarenkorb => {
+      return [{ text: text, key: Math.random().toString() }, ...prevWarenkorb];
+    });
+  };
+
+  //end List Items
+
+  //Beginning Scanner Code
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
@@ -30,6 +49,7 @@ export default function Warenkorb() {
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    scannedHandler(data);
   };
 
   if (hasPermission === null) {
@@ -38,44 +58,45 @@ export default function Warenkorb() {
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
   }
+  // ending scanner code
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Warenkorb</Text>
       </View>
-
+      {/* scanner code beginning */}
       <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={styles.scanner}
       />
-
       {scanned && (
         <TouchableOpacity
           onPress={() => setScanned(false)}
-          style={[styles.button, { width: 200 }]}
+          style={[styles.button, { width: 225 }]}
         >
-          <Text style={styles.buttonText}>Tap to Scan Again</Text>
+          <Text style={styles.buttonText}>Nochmal scannen?</Text>
         </TouchableOpacity>
       )}
+      {/* scanner code end*/}
 
       <View style={styles.searchBar}>
         <Ionicons name="ios-search" size={30} style={styles.icon} />
         <TextInput
           style={styles.textInput}
-          placeholder=" produkt suchen"
+          placeholder="Produkt suchen"
           placeholderTextColor="#999999"
         ></TextInput>
       </View>
-
-      <ScrollView style={styles.scrollContainer}>
-        {
-          <Text style={styles.footerText}>
-            Ihr Warenkorb ist zurzeit noch leer.
-          </Text>
-        }
-      </ScrollView>
-
+      {/* Warenkorb*/}
+      <FlatList
+        style={styles.scrollContainer}
+        data={warenkorb}
+        renderItem={({ item }) => (
+          <EinkaufslisteItem item={item} presshandler={presshandler} />
+        )}
+      />
+      {/* Warenkorb end*/}
       <View style={styles.footer}>
         <Text style={styles.footerText}>Gesamtpreis:0€</Text>
         <TouchableOpacity style={styles.button}>
@@ -113,7 +134,8 @@ const styles = StyleSheet.create({
   searchBar: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-start"
+    justifyContent: "flex-start",
+    marginTop: 8
   },
   icon: {
     padding: 5,
@@ -129,7 +151,8 @@ const styles = StyleSheet.create({
     textAlignVertical: "center",
     fontSize: 20,
     height: 40,
-    marginRight: 5
+    marginRight: 5,
+    paddingLeft: 6
   },
   footer: {
     alignItems: "center",
@@ -154,12 +177,13 @@ const styles = StyleSheet.create({
     width: 160,
     height: 45,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginTop: 8
   },
   scanner: {
     overflow: "hidden",
     width: 260,
     height: 200,
-    margin: 5
+    marginTop: 8
   }
 });
