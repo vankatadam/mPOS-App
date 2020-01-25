@@ -8,14 +8,14 @@ export default function AddItem({ submitHandler }) {
     setText(val);
   };
   return (
-    <View>
+    <View style={{ alignItems: "center" }}>
       <TextInput
         style={styles.input}
         placeholder="Artikel..."
         onChangeText={changeHandler}
       />
       <Button
-        style={styles.button}
+        styleButton={styles.button}
         onPress={() => submitHandler(text)}
         text="Artikel hinzufügen"
       />
@@ -29,9 +29,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 6,
     borderBottomWidth: 1,
-    borderBottomColor: "#ddd"
+    borderBottomColor: "#ddd",
+    width: "90%"
   },
   button: {
-    marginHorizontal: 80
+    width: "90%"
   }
 });

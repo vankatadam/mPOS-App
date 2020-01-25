@@ -13,6 +13,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { screenWidth } from "../screenWidth";
 import Constants from "expo-constants";
 import { createStackNavigator } from "@react-navigation/stack";
+import Button from "./Button";
+
 const Stack = createStackNavigator();
 export default function Weiteres({ navigation }) {
   return (
@@ -44,18 +46,22 @@ export default function Weiteres({ navigation }) {
         </TouchableOpacity>
       </View>
 
-      <TouchableOpacity
-        style={styles.button}
+      <Button
+        text="einloggen"
         onPress={() => navigation.navigate("Login")}
-      >
-        <Text style={styles.buttonText}>einloggen</Text>
-      </TouchableOpacity>
+        styleButton={{
+          marginVertical: 16,
+          width: "44%",
+          alignSelf: "center"
+        }}
+      />
     </View>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: "#fff"
   },
   header: {
     backgroundColor: "#fff0e6",
@@ -77,7 +83,7 @@ const styles = StyleSheet.create({
   },
   moreFunction: {
     flexDirection: "row",
-    borderBottomWidth: 1,
+    borderBottomWidth: 0,
     borderBottomColor: "#fff0e6",
     alignItems: "center",
     justifyContent: "flex-start"
@@ -91,20 +97,5 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     paddingVertical: 25
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 20,
-    fontWeight: "bold"
-  },
-  button: {
-    alignSelf: "center",
-    borderRadius: 16,
-    backgroundColor: "#ff6600",
-    width: 160,
-    height: 45,
-    alignItems: "center",
-    justifyContent: "center",
-    marginVertical: 30
   }
 });
