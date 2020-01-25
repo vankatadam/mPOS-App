@@ -84,7 +84,12 @@ if (!firebase.apps.length) {
 const Tab = createBottomTabNavigator();
 
 const TabNavi = () => (
-  <Tab.Navigator>
+  <Tab.Navigator
+    tabBarOptions={{
+      activeTintColor: "#ff6600",
+      inactiveTintColor: "black"
+    }}
+  >
     <Tab.Screen
       name="HomeScreen"
       options={{

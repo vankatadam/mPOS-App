@@ -46,7 +46,9 @@ export default function Einkaufsliste() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.header}>Einkaufsliste</Text>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>Einkaufsliste</Text>
+      </View>
       <View style={styles.content}>
         <AddItem submitHandler={submitHandler} />
         <View style={styles.list}>
@@ -65,7 +67,7 @@ export default function Einkaufsliste() {
 const styles = StyleSheet.create({
   container: {
     height: 80,
-    paddingTop: 36,
+    paddingTop: 0,
     backgroundColor: "#fff",
     flex: 1
   },
@@ -78,11 +80,18 @@ const styles = StyleSheet.create({
     flex: 1
   },
   header: {
-    textAlign: "center",
+    backgroundColor: "#fff0e6",
+    alignItems: "center",
+    justifyContent: "center",
+    borderBottomWidth: 2,
+    borderBottomColor: "#f2f2f2",
+    width: "100%"
+  },
+  headerText: {
     color: "#ff6600",
     fontSize: 20,
-    fontWeight: "bold",
-    backgroundColor: "#fff0e6",
-    height: 30
+    paddingTop: 34,
+    paddingBottom: 6,
+    fontWeight: "bold"
   }
 });

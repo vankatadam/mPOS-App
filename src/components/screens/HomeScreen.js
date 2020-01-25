@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: Constants.statusBarHeight + 8,
     justifyContent: "flex-start",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#fff"
   },
   scanner: {
     overflow: "hidden",

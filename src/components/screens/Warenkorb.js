@@ -17,6 +17,7 @@ import { withOrientation } from "react-navigation";
 import { TextInput } from "react-native-gesture-handler";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import EinkaufslisteItem from "../EinkaufslisteItem";
+import Button from "./Button";
 
 export default function Warenkorb() {
   //List Items
@@ -71,12 +72,11 @@ export default function Warenkorb() {
         style={styles.scanner}
       />
       {scanned && (
-        <TouchableOpacity
+        <Button
+          text={"Nochmal scannen?"}
           onPress={() => setScanned(false)}
-          style={[styles.button, { width: 225 }]}
-        >
-          <Text style={styles.buttonText}>Nochmal scannen?</Text>
-        </TouchableOpacity>
+          styleButton={{ width: 280, marginTop: 8 }}
+        />
       )}
       {/* scanner code end*/}
 
@@ -98,10 +98,8 @@ export default function Warenkorb() {
       />
       {/* Warenkorb end*/}
       <View style={styles.footer}>
-        <Text style={styles.footerText}>Gesamtpreis:0€</Text>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Zur Kasse</Text>
-        </TouchableOpacity>
+        <Text style={styles.footerText}>Gesamtpreis: 0€</Text>
+        <Button text={"Zur Kasse"} styleButton={{}} />
       </View>
     </View>
   );
@@ -110,7 +108,7 @@ export default function Warenkorb() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
+    backgroundColor: "#fff",
     alignItems: "center"
   },
   header: {
@@ -157,12 +155,12 @@ const styles = StyleSheet.create({
   footer: {
     alignItems: "center",
     justifyContent: "flex-start",
-    marginVertical: 30
+    marginVertical: 16
   },
   footerText: {
     color: "#ff6600",
     fontSize: 16,
-    marginVertical: 15,
+    marginVertical: 16,
     fontWeight: "bold",
     textAlign: "center"
   },

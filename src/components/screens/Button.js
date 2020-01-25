@@ -15,8 +15,10 @@ export default class Button extends Component {
   render({ onPress } = this.props) {
     return (
       <TouchableOpacity onPress={onPress}>
-        <View style={styles.button}>
-          <Text style={styles.text}>{this.props.text.toUpperCase()}</Text>
+        <View style={[styles.button, this.props.styleButton]}>
+          <Text style={[styles.text, this.props.styleButtonText]}>
+            {this.props.text.toUpperCase()}
+          </Text>
         </View>
       </TouchableOpacity>
     );
@@ -27,11 +29,11 @@ const styles = StyleSheet.create({
   // Button container
   button: {
     borderRadius: 50, // Rounded border
-    borderWidth: 2, // 2 point border widht
+    borderWidth: 1, // 2 point border widht
     borderColor: "#ff6600", // White colored border
     paddingHorizontal: 40, // Horizontal padding
-    paddingVertical: 10, // Vertical padding
-    backgroundColor: "#ff6600",
+    paddingVertical: 8, // Vertical padding
+    backgroundColor: "#fff0e6",
     bottom: 0,
     top: 0,
     left: 0,
@@ -39,7 +41,8 @@ const styles = StyleSheet.create({
   },
   // Button text
   text: {
-    color: "#ffffff",
-    fontWeight: "bold"
+    color: "#ff6600",
+    fontWeight: "bold",
+    fontSize: 16
   }
 });

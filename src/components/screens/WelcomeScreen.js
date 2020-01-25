@@ -88,9 +88,13 @@ export default function WelcomeScreen({ navigation }) {
           <Ionicons name="ios-list" {...iconStyles} />
         </TutorialView>
 
-        <TutorialView text="Kassenbelege speichern">
+        <TutorialView
+          text="Kassenbelege speichern"
+          button="true"
+          buttonOnPress={_enter}
+          buttonStyle={styles.button}
+        >
           <Ionicons name="md-cash" {...iconStyles} />
-          <Button text="Los gehts!" onPress={_enter} />
         </TutorialView>
       </ScrollView>
 
@@ -182,5 +186,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderBottomEndRadius: 100
-  }
+  },
+  button: { marginTop: 40 }
 });
