@@ -37,6 +37,8 @@ import Weiteres from "./src/components/screens/Weiteres";
 
 import Einkaufsliste from "./src/components/screens/Einkaufsliste";
 
+import Kasse from "./src/components/screens/Kasse";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { Ionicons } from "@expo/vector-icons";
@@ -85,13 +87,14 @@ const Tab = createBottomTabNavigator();
 
 const TabNavi = () => (
   <Tab.Navigator
+    headerShown=""
     tabBarOptions={{
       activeTintColor: "#ff6600",
       inactiveTintColor: "black"
     }}
   >
     <Tab.Screen
-      name="HomeScreen"
+      name="Homepage"
       options={{
         tabBarIcon: () => <Ionicons name="ios-home" size={25} color="#ff6600" />
       }}
@@ -115,7 +118,7 @@ const TabNavi = () => (
     />
 
     <Tab.Screen
-      name="Weiteres"
+      name="Mehr"
       options={{
         tabBarIcon: () => <Ionicons name="ios-more" size={25} color="#ff6600" />
       }}
@@ -203,7 +206,8 @@ function App() {
           component={TabNavi}
         />
         <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} headerShown="true" />
+        <Stack.Screen name="Kasse" component={Kasse} />
       </Stack.Navigator>
     </NavigationNativeContainer>
   );

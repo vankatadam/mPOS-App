@@ -18,6 +18,7 @@ import { FlatList } from "react-native-gesture-handler";
 import EinkaufslisteItem from "../EinkaufslisteItem";
 import { setLightEstimationEnabled } from "expo/build/AR";
 import AddItem from "../addItem";
+import MainHeader from "../MainHeader";
 
 export default function Einkaufsliste() {
   const [todos, setTodos] = useState([
@@ -46,9 +47,7 @@ export default function Einkaufsliste() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Einkaufsliste</Text>
-      </View>
+      <MainHeader text="Einkaufsliste" />
       <View style={styles.content}>
         <AddItem submitHandler={submitHandler} />
         <View style={styles.list}>

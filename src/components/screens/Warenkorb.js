@@ -18,8 +18,9 @@ import { TextInput } from "react-native-gesture-handler";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import EinkaufslisteItem from "../EinkaufslisteItem";
 import Button from "./Button";
+import MainHeader from "../MainHeader";
 
-export default function Warenkorb() {
+export default function Warenkorb({ navigation }) {
   //List Items
   const [warenkorb, setWarenkorb] = useState([]);
 
@@ -32,6 +33,10 @@ export default function Warenkorb() {
     setWarenkorb(prevWarenkorb => {
       return [{ text: text, key: Math.random().toString() }, ...prevWarenkorb];
     });
+  };
+
+  const kasseHandler = navigation => {
+    navigation.navigate("Kasse");
   };
 
   //end List Items
@@ -63,14 +68,14 @@ export default function Warenkorb() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Warenkorb</Text>
-      </View>
+      <MainHeader text="Warenkorb" />
       {/* scanner code beginning */}
-      <BarCodeScanner
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        style={styles.scanner}
-      />
+      <View style={styles.scannerWrapper}>
+        <BarCodeScanner
+          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+          style={styles.scanner}
+        />
+      </View>
       {scanned && (
         <Button
           text={"Nochmal scannen?"}
@@ -99,7 +104,13 @@ export default function Warenkorb() {
       {/* Warenkorb end*/}
       <View style={styles.footer}>
         <Text style={styles.footerText}>Gesamtpreis: 0€</Text>
-        <Button text={"Zur Kasse"} styleButton={{}} />
+        <Button
+          text={"Zur Kasse"}
+          onPress={() => {
+            navigation.navigate("Kasse");
+            setScanned(true);
+          }}
+        />
       </View>
     </View>
   );
@@ -180,8 +191,15 @@ const styles = StyleSheet.create({
   },
   scanner: {
     overflow: "hidden",
-    width: 260,
-    height: 200,
+    width: 300,
+    height: 400
+  },
+  scannerWrapper: {
+    overflow: "hidden",
+    width: "100%",
+    height: 250,
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: 8
   }
 });

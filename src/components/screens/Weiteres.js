@@ -14,14 +14,13 @@ import { screenWidth } from "../screenWidth";
 import Constants from "expo-constants";
 import { createStackNavigator } from "@react-navigation/stack";
 import Button from "./Button";
+import MainHeader from "../MainHeader";
 
 const Stack = createStackNavigator();
 export default function Weiteres({ navigation }) {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Mehr</Text>
-      </View>
+      <MainHeader text="Mehr" />
 
       <View style={styles.menu}>
         <TouchableOpacity style={styles.moreFunction}>

@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     borderColor: "#ff6600", // White colored border
     paddingHorizontal: 40, // Horizontal padding
     paddingVertical: 8, // Vertical padding
-    backgroundColor: "#fff0e6",
+    backgroundColor: "#ff6600",
     bottom: 0,
     top: 0,
     left: 0,
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
   // Button text
   text: {
-    color: "#ff6600",
+    color: "white",
     fontWeight: "bold",
     fontSize: 16
   }
