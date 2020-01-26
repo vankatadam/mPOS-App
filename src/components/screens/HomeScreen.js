@@ -22,7 +22,7 @@ export default function HomeScreen({ navigation }) {
         <Ionicons name="ios-search" size={30} style={styles.icon} />
         <TextInput
           style={styles.textInput}
-          placeholder=" produkt suchen"
+          placeholder="Produkt suchen"
           placeholderTextColor="#999999"
         ></TextInput>
         <TouchableOpacity onPress={() => navigation.navigate("Warenkorb")}>
