@@ -50,7 +50,7 @@ export default function Weiteres({ navigation }) {
         onPress={() => navigation.navigate("Login")}
         styleButton={{
           marginVertical: 16,
-          width: "44%",
+          width: 200,
           alignSelf: "center"
         }}
       />

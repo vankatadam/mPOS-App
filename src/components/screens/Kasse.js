@@ -13,7 +13,7 @@ export default function Kasse() {
   return (
     <SafeAreaView>
       <MainHeader text="Kasse">
-        <View style={{ flex: 1 }}>
+        <View>
           <Ionicons name="ios-arrow-back" size={25} color="#ff6600" />
         </View>
       </MainHeader>

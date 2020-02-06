@@ -9,6 +9,7 @@ import {
 
 //Firebase Import
 import * as firebase from "firebase";
+import Button from "./Button";
 
 export default class RegisterScreen extends React.Component {
   state = {
@@ -73,7 +74,6 @@ export default class RegisterScreen extends React.Component {
             ></TextInput>
           </View>
         </View>
-
         <TouchableOpacity style={styles.button} onPress={this.onSignUpPressed}>
           <Text style={{ color: "#FFF" }}>Register</Text>
         </TouchableOpacity>

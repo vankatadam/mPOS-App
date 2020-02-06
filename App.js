@@ -47,7 +47,18 @@ import { Ionicons } from "@expo/vector-icons";
 
 import * as firebase from "firebase";
 
+//redux imports
+import { Provider } from "react-redux";
+import { createStore, combineReducers } from "redux";
+import shopsReducer from "./src/store/reducers/shops";
+
 const Stack = createStackNavigator();
+
+const rootReducer = combineReducers({
+  shops: shopsReducer
+});
+
+const store = createStore(rootReducer);
 
 //---------- Database Connection Start ----------
 
@@ -189,27 +200,33 @@ var appContainer = createAppContainer(
 
 function App() {
   return (
-    <NavigationNativeContainer>
-      <Stack.Navigator headerMode="none">
-        <Stack.Screen
-          options={({}) => ({
-            headerShown: false
-          })}
-          component={WelcomeScreen}
-        />
-        <Stack.Screen
-          options={({}) => ({
-            headerTitleAlign: "center",
-            headerLeft: null
-          })}
-          name="Home"
-          component={TabNavi}
-        />
-        <Stack.Screen name="Register" component={RegisterScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} headerShown="true" />
-        <Stack.Screen name="Kasse" component={Kasse} />
-      </Stack.Navigator>
-    </NavigationNativeContainer>
+    <Provider store={store}>
+      <NavigationNativeContainer>
+        <Stack.Navigator headerMode="none">
+          <Stack.Screen
+            options={({}) => ({
+              headerShown: false
+            })}
+            component={WelcomeScreen}
+          />
+          <Stack.Screen
+            options={({}) => ({
+              headerTitleAlign: "center",
+              headerLeft: null
+            })}
+            name="Home"
+            component={TabNavi}
+          />
+          <Stack.Screen name="Register" component={RegisterScreen} />
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            headerShown="true"
+          />
+          <Stack.Screen name="Kasse" component={Kasse} />
+        </Stack.Navigator>
+      </NavigationNativeContainer>
+    </Provider>
   );
 }
 
