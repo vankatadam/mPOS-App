@@ -6,8 +6,8 @@ export default function MainHeader(props) {
   return (
     <View style={[styles.header, props.styleHeader]}>
       {props.children}
-      <Text style={styles.headerText}>
-        {[props.text, props.styleHeaderText]}
+      <Text style={[styles.headerText, props.styleHeaderText]}>
+        {[props.text]}
       </Text>
     </View>
   );
@@ -16,8 +16,8 @@ export default function MainHeader(props) {
 const styles = StyleSheet.create({
   header: {
     backgroundColor: "#fff0e6",
-    alignItems: "flex-end",
-    justifyContent: "space-around",
+    alignItems: "center",
+    justifyContent: "center",
     borderBottomWidth: 2,
     borderBottomColor: "#f2f2f2",
     width: "100%",
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     paddingTop: 34,
     paddingBottom: 6,
     fontWeight: "bold",
-    flex: 1
+    position: "relative",
+    alignSelf: "center"
   }
 });

@@ -106,6 +106,7 @@ export default function Warenkorb({ navigation }) {
         <Text style={styles.footerText}>Gesamtpreis: 0€</Text>
         <Button
           text={"Zur Kasse"}
+          styleButton={{ width: 200 }}
           onPress={() => {
             navigation.navigate("Kasse");
             setScanned(true);

@@ -14,12 +14,13 @@ import {
 export default class Button extends Component {
   render({ onPress } = this.props) {
     return (
-      <TouchableOpacity onPress={onPress}>
-        <View style={[styles.button, this.props.styleButton]}>
-          <Text style={[styles.text, this.props.styleButtonText]}>
-            {this.props.text.toUpperCase()}
-          </Text>
-        </View>
+      <TouchableOpacity
+        onPress={onPress}
+        style={[styles.button, this.props.styleButton]}
+      >
+        <Text style={[styles.text, this.props.styleButtonText]}>
+          {this.props.text.toUpperCase()}
+        </Text>
       </TouchableOpacity>
     );
   }
