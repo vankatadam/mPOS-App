@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   itemText: {
-    marginLeft: 10
+    marginLeft: 10,
+    color: "#000000"
   }
 });

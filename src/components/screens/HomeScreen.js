@@ -9,15 +9,43 @@ import {
   Dimensions,
   AppRegistry,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
+  Image,
+  FlatList
 } from "react-native";
 import Constants from "expo-constants";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import { Ionicons } from "@expo/vector-icons";
+import Deal from "../deals";
+
+const DATA = [
+  {
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+    title: "First Item",
+    text: "Nur 1€!!!",
+    src: require("../../../assets/Logo_Lidl.png")
+  },
+  {
+    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+    title: "Second Item",
+    text: "1€",
+    src: require("../../../assets/Logo_Lidl.png")
+  },
+  {
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
+    text: "1€",
+    src: require("../../../assets/Logo_Lidl.png")
+  }
+];
 
 export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
+      <Image
+        source={require("../../../assets/mPOS.jpg")}
+        style={{ width: 75, height: 75, margin: 8 }}
+      ></Image>
       <View style={styles.searchBar}>
         <Ionicons name="ios-search" size={30} style={styles.icon} />
         <TextInput
@@ -29,6 +57,13 @@ export default function HomeScreen({ navigation }) {
           <Ionicons name="ios-barcode" size={40} style={styles.icon} />
         </TouchableOpacity>
       </View>
+      <FlatList
+        data={DATA}
+        renderItem={({ item }) => (
+          <Deal title={item.title} text={item.text} src={item.src} />
+        )}
+        style={{ marginBottom: 16 }}
+      ></FlatList>
     </SafeAreaView>
   );
 }
@@ -36,7 +71,7 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: Constants.statusBarHeight + 8,
+    marginTop: Constants.statusBarHeight,
     justifyContent: "flex-start",
     alignItems: "center",
     backgroundColor: "#fff"
