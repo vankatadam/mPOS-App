@@ -1,5 +1,5 @@
 const initialState = {
-  shops: ["Edeka", "Aldi", "Rewe"],
+  shops: ["Edeka", "Aldi_Sued", "Rewe"],
   selectedShop: "Edeka"
 };
 
