@@ -33,7 +33,7 @@ export default function Kundenservice() {
       <Text style={styles.text}>E-Mail-Adresse:</Text>
       <TextInput style={styles.textInput}></TextInput>
       <Text style={styles.text}>Womit können wir Ihnen helfen?</Text>
-      <TextInput style={styles.textInput} flex="1"></TextInput>
+      <TextInput style={styles.textInput}></TextInput>
       <Button
         text="senden"
         styleButton={{

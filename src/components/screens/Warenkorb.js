@@ -30,7 +30,9 @@ export default function Warenkorb({ navigation }) {
     setWarenkorb(prevWarenkorb => {
       return prevWarenkorb.filter(todo => todo.key != item.key);
     });
-    setTotalPrice(totalPrice - item.price);
+    var tmpPrice =
+      Math.round((totalPrice - item.price + Number.EPSILON) * 100) / 100;
+    setTotalPrice(tmpPrice);
   };
 
   const kasseHandler = navigation => {
@@ -56,7 +58,11 @@ export default function Warenkorb({ navigation }) {
     for (var i = 0; i < dummyDB.length; i++) {
       if (dummyDB[i].id == data) {
         valid = true;
-        setTotalPrice(totalPrice + dummyDB[i].price);
+        var tmpPrice =
+          Math.round((totalPrice + dummyDB[i].price + Number.EPSILON) * 100) /
+          100;
+        setTotalPrice(tmpPrice);
+        setTotalPrice(tmpPrice);
         setWarenkorb(prevWarenkorb => {
           return [
             {
