@@ -27,7 +27,10 @@ export default function Weiteres({ navigation }) {
           <Ionicons name="md-cart" size={50} style={styles.icon} />
           <Text style={styles.functionText}>Einkäufe</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.moreFunction}>
+        <TouchableOpacity
+          style={styles.moreFunction}
+          onPress={() => navigation.navigate("KundenDaten")}
+        >
           <Ionicons name="md-person" size={50} style={styles.icon} />
           <Text style={styles.functionText}>Persönliche Angaben</Text>
         </TouchableOpacity>
@@ -39,7 +42,10 @@ export default function Weiteres({ navigation }) {
           <Ionicons name="md-locate" size={50} style={styles.icon} />
           <Text style={styles.functionText}>Meine Filiale</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.moreFunction}>
+        <TouchableOpacity
+          style={styles.moreFunction}
+          onPress={() => navigation.navigate("Service")}
+        >
           <Ionicons name="ios-chatbubbles" size={50} style={styles.icon} />
           <Text style={styles.functionText}>Kundenservice</Text>
         </TouchableOpacity>

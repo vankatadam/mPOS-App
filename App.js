@@ -39,6 +39,10 @@ import Einkaufsliste from "./src/components/screens/Einkaufsliste";
 
 import Kasse from "./src/components/screens/Kasse";
 
+import KundenService from "./src/components/screens/KundenService";
+
+import PersonlicheAngaben from "./src/components/screens/PersonlicheAngaben";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { Ionicons } from "@expo/vector-icons";
@@ -224,6 +228,8 @@ function App() {
             headerShown="true"
           />
           <Stack.Screen name="Kasse" component={Kasse} />
+          <Stack.Screen name="Service" component={KundenService} />
+          <Stack.Screen name="KundenDaten" component={PersonlicheAngaben} />
         </Stack.Navigator>
       </NavigationNativeContainer>
     </Provider>
