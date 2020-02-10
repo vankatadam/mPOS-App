@@ -4,7 +4,9 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  SafeAreaView,
+  Image
 } from "react-native";
 
 //Firebase Import
@@ -33,8 +35,12 @@ export default class RegisterScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.greeting}>{`Hello!\nSign up to get started.`}</Text>
+      <SafeAreaView style={styles.container}>
+        <Image
+          source={require("../../../assets/mPOS.jpg")}
+          style={{ width: 75, height: 75, margin: 8, alignSelf: "center" }}
+        ></Image>
+        <Text style={styles.greeting}>{`Willkommen bei mPOS!`}</Text>
 
         <View style={styles.errorMessage}>
           {this.state.errorMessage && (
@@ -44,7 +50,7 @@ export default class RegisterScreen extends React.Component {
 
         <View style={styles.form}>
           <View>
-            <Text style={styles.inputTitle}>Full Name</Text>
+            <Text style={styles.inputTitle}>Vollname:</Text>
             <TextInput
               style={styles.input}
               autoCapitalize="none"
@@ -54,7 +60,7 @@ export default class RegisterScreen extends React.Component {
           </View>
 
           <View style={{ marginTop: 32 }}>
-            <Text style={styles.inputTitle}>Email Address</Text>
+            <Text style={styles.inputTitle}>E-Mail-Adresse:</Text>
             <TextInput
               style={styles.input}
               autoCapitalize="none"
@@ -64,7 +70,7 @@ export default class RegisterScreen extends React.Component {
           </View>
 
           <View style={{ marginTop: 32 }}>
-            <Text style={styles.inputTitle}>Password</Text>
+            <Text style={styles.inputTitle}>Passwort:</Text>
             <TextInput
               style={styles.input}
               secureTextEntry
@@ -74,10 +80,16 @@ export default class RegisterScreen extends React.Component {
             ></TextInput>
           </View>
         </View>
-        <TouchableOpacity style={styles.button} onPress={this.onSignUpPressed}>
-          <Text style={{ color: "#FFF" }}>Register</Text>
-        </TouchableOpacity>
-      </View>
+        <Button
+          text="registrieren"
+          styleButton={{
+            marginVertical: 16,
+            width: 200,
+            alignSelf: "center"
+          }}
+          onPress={this.onSignUpPressed}
+        />
+      </SafeAreaView>
     );
   }
 }
@@ -87,10 +99,10 @@ const styles = StyleSheet.create({
     flex: 1
   },
   greeting: {
-    marginTop: 32,
-    fontSize: 18,
-    fontWeight: "400",
-    textAlign: "center"
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#FF6600"
   },
   errorMessage: {
     height: 72,
@@ -99,8 +111,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 30
   },
   error: {
-    color: "#E9446A",
-    fontSize: 13,
+    color: "#999999",
+    fontSize: 16,
     fontWeight: "600",
     textAlign: "center"
   },
@@ -109,23 +121,15 @@ const styles = StyleSheet.create({
     marginHorizontal: 30
   },
   inputTitle: {
-    color: "#8A8F9E",
-    fontSize: 10,
+    color: "black",
+    fontSize: 20,
     textTransform: "uppercase"
   },
   input: {
-    borderBottomColor: "#8A8F9E",
+    borderBottomColor: "#999999",
     borderBottomWidth: StyleSheet.hairlineWidth,
     height: 40,
-    fontSize: 15,
-    color: "#161F3D"
-  },
-  button: {
-    marginHorizontal: 30,
-    backgroundColor: "orange",
-    borderRadius: 20,
-    height: 52,
-    alignItems: "center",
-    justifyContent: "center"
+    fontSize: 20,
+    color: "black"
   }
 });
