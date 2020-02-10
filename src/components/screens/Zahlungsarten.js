@@ -16,24 +16,24 @@ import Constants from "expo-constants";
 import Button from "./Button";
 import MainHeader from "../MainHeader";
 
-export default function PersonlicheAngaben() {
+export default function Zahlungsarten() {
   return (
     <SafeAreaView style={styles.container}>
-      <MainHeader text="Persönliche Angaben" />
+      <MainHeader text="Zahlungsarten" />
       <Text style={styles.text}>
-        Hier können Sie Ihre persönlichen Daten ändern oder ergänzen.
+        Hier können Sie Zahlungsarten hinzufügen und verwalten.
       </Text>
       <View style={styles.panel}>
         <View style={styles.titel}>
-          <Ionicons name="md-person" size={45} style={styles.icon} />
-          <Text style={styles.titelText}>Persönliche Daten</Text>
+          <Ionicons name="md-card" size={45} style={styles.icon} />
+          <Text style={styles.titelText}>Kreditkarte</Text>
         </View>
-        <Text style={styles.text}>Namen:</Text>
-        <Text style={styles.text}>E-Mail-Adresse:</Text>
+        <Text style={styles.text}>****1234</Text>
+        <Text style={styles.text}>Gültig bis 09.20</Text>
         <Button
           text="bearbeiten"
           styleButton={{
-            marginVertical: 16,
+            marginVertical: 50,
             width: 200,
             alignSelf: "center"
           }}
@@ -41,31 +41,22 @@ export default function PersonlicheAngaben() {
       </View>
       <View style={styles.panel}>
         <View style={styles.titel}>
-          <Ionicons name="ios-lock" size={45} style={styles.icon} />
-          <Text style={styles.titelText}>Passwort ändern</Text>
+          <Ionicons name="md-cash" size={45} style={styles.icon} />
+          <Text style={styles.titelText}>Paypal</Text>
         </View>
-        <Text style={styles.text}>**********</Text>
+        <Text style={styles.text}>Max@Mustermann.de</Text>
         <Button
-          text="ändern"
+          text="bearbeiten"
           styleButton={{
-            marginVertical: 45,
+            marginVertical: 75,
             width: 200,
             alignSelf: "center"
           }}
         />
       </View>
-      <View style={styles.panel}>
-        <View style={styles.titel}>
-          <Ionicons name="md-person" size={45} style={styles.icon} />
-          <Text style={styles.titelText}>Kundenkonto löschen</Text>
-        </View>
-        <Text style={styles.text}>
-          Bitte beachten Sie, dass Sie diese Aktion nicht widerrufen können!
-        </Text>
-        <TouchableOpacity>
-          <Text style={styles.linkText}>Kundenkonto löschen</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity>
+        <Ionicons name="ios-add-circle" size={80} style={styles.button} />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -101,12 +92,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     paddingVertical: 15
   },
-  linkText: {
-    fontSize: 20,
-    fontStyle: "italic",
-    color: "#999999",
-    marginLeft: 5,
-    marginVertical: 15,
-    textDecorationLine: "underline"
+  button: {
+    marginVertical: 20,
+    alignSelf: "center",
+    color: "#ff6600"
   }
 });

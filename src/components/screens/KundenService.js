@@ -33,7 +33,7 @@ export default function Kundenservice() {
       <Text style={styles.text}>E-Mail-Adresse:</Text>
       <TextInput style={styles.textInput}></TextInput>
       <Text style={styles.text}>Womit können wir Ihnen helfen?</Text>
-      <TextInput style={styles.textInput}></TextInput>
+      <TextInput style={styles.area}></TextInput>
       <Button
         text="senden"
         styleButton={{
@@ -68,5 +68,17 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
     marginTop: 5,
     height: 40
+  },
+  area: {
+    color: "black",
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: "#ff6600",
+    backgroundColor: "white",
+    textAlignVertical: "center",
+    fontSize: 20,
+    marginHorizontal: 8,
+    marginTop: 5,
+    height: 150
   }
 });

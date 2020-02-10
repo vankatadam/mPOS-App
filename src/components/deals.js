@@ -8,7 +8,10 @@ export default function deals(props) {
     <View style={{ paddingHorizontal: 8 }}>
       <View>
         <View style={styles.item}>
-          <Image source={props.src} style={{ width: 250, height: 200 }} />
+          <Image
+            source={props.src}
+            style={{ width: 250, height: 200, resizeMode: "center" }}
+          />
           <Text style={styles.itemTitle}>{props.title}</Text>
           <Text style={styles.itemText}>{props.text}</Text>
         </View>
@@ -19,6 +22,7 @@ export default function deals(props) {
 
 const styles = StyleSheet.create({
   item: {
+    alignSelf: "center",
     padding: 10,
     marginTop: 16,
     borderColor: "#bbb",

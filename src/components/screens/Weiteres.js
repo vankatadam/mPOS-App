@@ -23,7 +23,10 @@ export default function Weiteres({ navigation }) {
       <MainHeader text="Mehr" />
 
       <View style={styles.menu}>
-        <TouchableOpacity style={styles.moreFunction}>
+        <TouchableOpacity
+          style={styles.moreFunction}
+          onPress={() => navigation.navigate("Bons")}
+        >
           <Ionicons name="md-cart" size={50} style={styles.icon} />
           <Text style={styles.functionText}>Einkäufe</Text>
         </TouchableOpacity>
@@ -34,7 +37,10 @@ export default function Weiteres({ navigation }) {
           <Ionicons name="md-person" size={50} style={styles.icon} />
           <Text style={styles.functionText}>Persönliche Angaben</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.moreFunction}>
+        <TouchableOpacity
+          style={styles.moreFunction}
+          onPress={() => navigation.navigate("Zahlungsarten")}
+        >
           <Ionicons name="md-card" size={50} style={styles.icon} />
           <Text style={styles.functionText}>Zahlungsarten</Text>
         </TouchableOpacity>
