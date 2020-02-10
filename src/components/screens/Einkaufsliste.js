@@ -26,9 +26,9 @@ export default function Einkaufsliste() {
     { text: "Delete me", key: "2" },
     { text: "Test", key: "3" }
   ]);
-  const presshandler = key => {
+  const presshandler = item => {
     setTodos(prevTodos => {
-      return prevTodos.filter(todo => todo.key != key);
+      return prevTodos.filter(todo => todo.key != item.key);
     });
   };
   const submitHandler = text => {

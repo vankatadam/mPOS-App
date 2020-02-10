@@ -5,10 +5,14 @@ import { Ionicons } from "@expo/vector-icons";
 
 export default function EinkauslisteItem({ item, presshandler }) {
   return (
-    <TouchableOpacity onPress={() => presshandler(item.key)}>
+    <TouchableOpacity onPress={() => presshandler(item)}>
       <View style={styles.item}>
         <Ionicons name="ios-trash" size={18} color="#333" />
-        <Text style={styles.itemText}>{item.text}</Text>
+        <Text style={styles.itemText}>
+          {item.text}
+          {item.productName}
+          {item.price != null ? " " + item.price + "€" : null}
+        </Text>
       </View>
     </TouchableOpacity>
   );
