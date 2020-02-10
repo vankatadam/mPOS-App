@@ -41,7 +41,11 @@ import Kasse from "./src/components/screens/Kasse";
 
 import KundenService from "./src/components/screens/KundenService";
 
+import Einkaufe from "./src/components/screens/Einkaufe";
+
 import PersonlicheAngaben from "./src/components/screens/PersonlicheAngaben";
+
+import Zahlungsarten from "./src/components/screens/Zahlungsarten";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -230,6 +234,8 @@ function App() {
           <Stack.Screen name="Kasse" component={Kasse} />
           <Stack.Screen name="Service" component={KundenService} />
           <Stack.Screen name="KundenDaten" component={PersonlicheAngaben} />
+          <Stack.Screen name="Bons" component={Einkaufe} />
+          <Stack.Screen name="Zahlungsarten" component={Zahlungsarten} />
         </Stack.Navigator>
       </NavigationNativeContainer>
     </Provider>
