@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
   item: {
     padding: 10,
     marginTop: 16,
+    marginHorizontal: 8,
     borderColor: "#bbb",
     borderWidth: 1,
     borderStyle: "dashed",
@@ -30,6 +31,7 @@ const styles = StyleSheet.create({
   },
   itemText: {
     marginLeft: 10,
-    color: "#000000"
+    color: "#000000",
+    fontSize: 16
   }
 });
