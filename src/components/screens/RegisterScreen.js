@@ -87,6 +87,7 @@ export default class RegisterScreen extends React.Component {
             width: 200,
             alignSelf: "center"
           }}
+          onPress={this.onSignUpPressed}
         />
       </SafeAreaView>
     );
