@@ -24,15 +24,13 @@ export default function Warenkorb({ navigation }) {
   //List Items
   const [warenkorb, setWarenkorb] = useState([]);
 
-  const presshandler = key => {
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const presshandler = item => {
     setWarenkorb(prevWarenkorb => {
-      return prevWarenkorb.filter(todo => todo.key != key);
+      return prevWarenkorb.filter(todo => todo.key != item.key);
     });
-  };
-  const scannedHandler = text => {
-    setWarenkorb(prevWarenkorb => {
-      return [{ text: text, key: Math.random().toString() }, ...prevWarenkorb];
-    });
+    setTotalPrice(totalPrice - item.price);
   };
 
   const kasseHandler = navigation => {
@@ -54,8 +52,32 @@ export default function Warenkorb({ navigation }) {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-    scannedHandler(data);
+    var valid = false;
+    for (var i = 0; i < dummyDB.length; i++) {
+      if (dummyDB[i].id == data) {
+        valid = true;
+        setTotalPrice(totalPrice + dummyDB[i].price);
+        setWarenkorb(prevWarenkorb => {
+          return [
+            {
+              key: Math.random().toString(),
+              id: dummyDB[i].id,
+              productName: dummyDB[i].productName,
+              price: dummyDB[i].price
+            },
+            ...prevWarenkorb
+          ];
+        });
+        break;
+      }
+    }
+    if (valid == true) {
+      alert(`${data} wurde abgescanned!`);
+    } else {
+      alert(
+        `${data} existiert nicht. Versuchen sie es nochmal oder fragen sie einen Mitarbeiter`
+      );
+    }
   };
 
   if (hasPermission === null) {
@@ -66,9 +88,28 @@ export default function Warenkorb({ navigation }) {
   }
   // ending scanner code
 
+  //scanner Dummy Data
+  const dummyDB = [
+    {
+      id: "Kaffee",
+      productName: "Kaffee",
+      price: 3.99
+    },
+    {
+      id: "Milch",
+      productName: "Milch",
+      price: 0.99
+    },
+    {
+      id: "Kopfsalat",
+      productName: "Kopfsalat",
+      price: 0.79
+    }
+  ];
+
   return (
     <View style={styles.container}>
-      <MainHeader text="Warenkorb" />
+      <MainHeader text="Warenkorb" styleHeader={{ width: "100%" }} />
       {/* scanner code beginning */}
       <View style={styles.scannerWrapper}>
         <BarCodeScanner
@@ -103,12 +144,15 @@ export default function Warenkorb({ navigation }) {
       />
       {/* Warenkorb end*/}
       <View style={styles.footer}>
-        <Text style={styles.footerText}>Gesamtpreis: 0€</Text>
+        <Text style={styles.footerText}>Gesamtpreis: {totalPrice}€</Text>
         <Button
           text={"Zur Kasse"}
           styleButton={{ width: 200 }}
           onPress={() => {
-            navigation.navigate("Kasse");
+            navigation.navigate("Kasse", {
+              warenkorb: warenkorb,
+              totalPrice: totalPrice
+            });
             setScanned(true);
           }}
         />

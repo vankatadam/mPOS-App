@@ -21,21 +21,21 @@ import Deal from "../deals";
 const DATA = [
   {
     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "First Item",
-    text: "Nur 1€!!!",
-    src: require("../../../assets/Logo_Lidl.png")
+    title: "Kaffe jede Packung nur:",
+    text: "3,99€!",
+    src: require("../../../assets/Kaffee.jpg")
   },
   {
     id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    title: "Second Item",
-    text: "1€",
-    src: require("../../../assets/Logo_Lidl.png")
+    title: "Heute Milch für nur:",
+    text: "0,99€!",
+    src: require("../../../assets/Milch.jpeg")
   },
   {
     id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "Third Item",
-    text: "1€",
-    src: require("../../../assets/Logo_Lidl.png")
+    title: "Wochendeal! Kopfsalat für: ",
+    text: "0,79€!",
+    src: require("../../../assets/Salat.jpeg")
   }
 ];
 

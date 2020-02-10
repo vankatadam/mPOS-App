@@ -20,22 +20,13 @@ export default function MainHeader(props) {
 
   return (
     <View style={[styles.header, props.styleHeader]}>
-      <View styles={styles.leftContainer}>
-        <Image
-          style={{
-            width: 50,
-            height: 50,
-            resizeMode: "cover"
-          }}
-          source={logo}
-        />
-      </View>
+      <Image style={styles.logo} source={logo} />
+
       <Text style={[styles.headerText, props.styleHeaderText]}>
         {[props.text]}
       </Text>
-      <View style={styles.rightContainer}>
-        <Text>Logged User</Text>
-      </View>
+
+      <Text style={styles.loggedUser}>Michael Harr</Text>
     </View>
   );
 }
@@ -44,10 +35,19 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: "#fff0e6",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     borderBottomWidth: 2,
     borderBottomColor: "#f2f2f2",
     flexDirection: "row"
+  },
+  logo: {
+    width: 35,
+    height: 35,
+    resizeMode: "contain",
+    marginBottom: 4,
+    position: "absolute",
+    left: 6,
+    bottom: 0
   },
   headerText: {
     color: "#ff6600",
@@ -56,17 +56,13 @@ const styles = StyleSheet.create({
     paddingBottom: 6,
     fontWeight: "bold"
   },
-  leftContainer: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    backgroundColor: "green"
-  },
-  rightContainer: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    backgroundColor: "red"
+  loggedUser: {
+    marginBottom: 4,
+    position: "absolute",
+    right: 2,
+    bottom: 0,
+    width: 80,
+    textAlign: "center",
+    color: "#ff6600"
   }
 });
