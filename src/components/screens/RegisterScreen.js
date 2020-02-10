@@ -38,7 +38,13 @@ export default class RegisterScreen extends React.Component {
       <SafeAreaView style={styles.container}>
         <Image
           source={require("../../../assets/mPOS.jpg")}
-          style={{ width: 75, height: 75, margin: 8, alignSelf: "center" }}
+          style={{
+            width: 75,
+            height: 75,
+            margin: 8,
+            alignSelf: "center",
+            marginTop: 36
+          }}
         ></Image>
         <Text style={styles.greeting}>{`Willkommen bei mPOS!`}</Text>
 
@@ -84,7 +90,7 @@ export default class RegisterScreen extends React.Component {
           text="registrieren"
           styleButton={{
             marginVertical: 16,
-            width: 200,
+            width: 220,
             alignSelf: "center"
           }}
           onPress={this.onSignUpPressed}

@@ -66,7 +66,13 @@ export default class LoginScreen extends React.Component {
       <SafeAreaView style={styles.container}>
         <Image
           source={require("../../../assets/mPOS.jpg")}
-          style={{ width: 75, height: 75, margin: 8, alignSelf: "center" }}
+          style={{
+            width: 75,
+            height: 75,
+            margin: 8,
+            alignSelf: "center",
+            marginTop: 36
+          }}
         ></Image>
         <Text style={styles.greeting}>{`Willkommen zurück!`}</Text>
 
