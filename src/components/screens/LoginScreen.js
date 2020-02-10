@@ -6,10 +6,11 @@ import {
   SafeAreaView,
   StyleSheet,
   Dimensions,
-  Alert
+  Alert,
+  Image
 } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native";
-
+import Button from "./Button";
 // Firebase Import
 import * as firebase from "firebase";
 
@@ -62,8 +63,12 @@ export default class LoginScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.greeting}>{`Hello again.\nWelcome back.`}</Text>
+      <SafeAreaView style={styles.container}>
+        <Image
+          source={require("../../../assets/mPOS.jpg")}
+          style={{ width: 75, height: 75, margin: 8, alignSelf: "center" }}
+        ></Image>
+        <Text style={styles.greeting}>{`Willkommen zurück!`}</Text>
 
         <View style={styles.errorMessage}>
           {this.state.errorMessage && (
@@ -73,7 +78,7 @@ export default class LoginScreen extends React.Component {
 
         <View style={styles.form}>
           <View>
-            <Text style={styles.inputTitle}>Email Address</Text>
+            <Text style={styles.inputTitle}>E-Mail-Adresse:</Text>
             <TextInput
               style={styles.input}
               autoCapitalize="none"
@@ -83,7 +88,7 @@ export default class LoginScreen extends React.Component {
           </View>
 
           <View style={{ marginTop: 32 }}>
-            <Text style={styles.inputTitle}>Password</Text>
+            <Text style={styles.inputTitle}>Passwort:</Text>
             <TextInput
               style={styles.input}
               secureTextEntry
@@ -94,24 +99,30 @@ export default class LoginScreen extends React.Component {
           </View>
         </View>
 
-        <TouchableOpacity style={styles.button} onPress={this.onLoginPressed}>
-          <Text style={{ color: "#FFF" }}>Sign In</Text>
-        </TouchableOpacity>
+        <Button
+          text="einloggen"
+          styleButton={{
+            marginVertical: 16,
+            width: 200,
+            alignSelf: "center"
+          }}
+          onPress={this.onLoginPressed}
+        />
 
         <TouchableOpacity
           style={{ alignSelf: "center", marginTop: 32 }}
           onPress={() => this.props.navigation.navigate("Register")}
         >
-          <Text style={{ color: "#414959", fontSize: 13 }}>
-            New to ScanIIS App?{" "}
+          <Text style={{ color: "#999999", fontSize: 13 }}>
+            Neu bei mPOS?{" "}
             <Text
               style={{
                 fontWeight: "500",
                 fontStyle: "italic",
-                color: "orange"
+                color: "#FF6600"
               }}
             >
-              Sign Up
+              jetzt registrieren!
             </Text>
           </Text>
         </TouchableOpacity>
@@ -120,20 +131,20 @@ export default class LoginScreen extends React.Component {
           style={{ alignSelf: "center", marginTop: 32 }}
           onPress={() => this.onResetPasswordPressed()}
         >
-          <Text style={{ color: "#414959", fontSize: 13 }}>
-            Forgot Password?{" "}
+          <Text style={{ color: "#999999", fontSize: 13 }}>
+            Passwort vergessen?{" "}
             <Text
               style={{
                 fontWeight: "500",
                 fontStyle: "italic",
-                color: "orange"
+                color: "#FF6600"
               }}
             >
-              Reset it here!
+              Passwort zurücksetzen!
             </Text>
           </Text>
         </TouchableOpacity>
-      </View>
+      </SafeAreaView>
     );
   }
 }
@@ -143,10 +154,10 @@ const styles = StyleSheet.create({
     flex: 1
   },
   greeting: {
-    marginTop: 32,
-    fontSize: 18,
-    fontWeight: "400",
-    textAlign: "center"
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#FF6600"
   },
   errorMessage: {
     height: 72,
@@ -155,8 +166,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 30
   },
   error: {
-    color: "#E9446A",
-    fontSize: 13,
+    color: "#999999",
+    fontSize: 16,
     fontWeight: "600",
     textAlign: "center"
   },
@@ -165,23 +176,15 @@ const styles = StyleSheet.create({
     marginHorizontal: 30
   },
   inputTitle: {
-    color: "#8A8F9E",
-    fontSize: 10,
+    color: "black",
+    fontSize: 20,
     textTransform: "uppercase"
   },
   input: {
-    borderBottomColor: "#8A8F9E",
+    borderBottomColor: "#999999",
     borderBottomWidth: StyleSheet.hairlineWidth,
     height: 40,
-    fontSize: 15,
-    color: "#161F3D"
-  },
-  button: {
-    marginHorizontal: 30,
-    backgroundColor: "orange",
-    borderRadius: 20,
-    height: 52,
-    alignItems: "center",
-    justifyContent: "center"
+    fontSize: 20,
+    color: "black"
   }
 });
