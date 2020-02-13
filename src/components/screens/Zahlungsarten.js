@@ -7,7 +7,8 @@ import {
   StyleSheet,
   Dimensions,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  Image
 } from "react-native";
 import TutorialView from "../TutorialView";
 import { Ionicons } from "@expo/vector-icons";
@@ -25,7 +26,11 @@ export default function Zahlungsarten() {
       </Text>
       <View style={styles.panel}>
         <View style={styles.titel}>
-          <Ionicons name="md-card" size={45} style={styles.icon} />
+          <Image
+            source={require("../../../assets/master.png")}
+            style={{ width: 45, height: 45, marginHorizontal: 6 }}
+          ></Image>
+          {/* <Ionicons name="md-card" size={45} style={styles.icon} /> */}
           <Text style={styles.titelText}>Kreditkarte</Text>
         </View>
         <Text style={styles.text}>****1234</Text>
@@ -41,7 +46,11 @@ export default function Zahlungsarten() {
       </View>
       <View style={styles.panel}>
         <View style={styles.titel}>
-          <Ionicons name="md-cash" size={45} style={styles.icon} />
+          <Image
+            source={require("../../../assets/paypal.png")}
+            style={{ width: 45, height: 45, marginHorizontal: 3 }}
+          ></Image>
+          {/* <Ionicons name="md-cash" size={45} style={styles.icon} /> */}
           <Text style={styles.titelText}>Paypal</Text>
         </View>
         <Text style={styles.text}>Max@Mustermann.de</Text>
