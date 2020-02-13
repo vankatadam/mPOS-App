@@ -6,6 +6,7 @@ import { screenWidth } from "./screenWidth";
 
 export default function MainHeader(props) {
   const selectedShop = useSelector(state => state.shops.selectedShop);
+  const loggedUser = useSelector(state => state.shops.loggedUser);
 
   var logo;
   if (selectedShop === "Edeka") {
@@ -26,7 +27,7 @@ export default function MainHeader(props) {
         {[props.text]}
       </Text>
 
-      <Text style={styles.loggedUser}>Michael Harr</Text>
+      <Text style={styles.loggedUser}>{loggedUser}</Text>
     </View>
   );
 }

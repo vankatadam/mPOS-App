@@ -51,7 +51,44 @@ export default function Kasse({ route, navigation }) {
             alignItems: "center"
           }}
         >
-          <Ionicons name="md-cash" size={75} style={{}} />
+          <Text
+            style={{
+              marginHorizontal: 20,
+              borderWidth: 2,
+              padding: 4,
+              fontSize: 16,
+              borderRadius: 4
+            }}
+          >
+            {" "}
+            PayPal
+          </Text>
+          <Text
+            style={{
+              marginHorizontal: 20,
+              borderWidth: 2,
+              padding: 4,
+              paddingHorizontal: 8,
+              fontSize: 16,
+              borderRadius: 4
+            }}
+          >
+            {" "}
+            Bar
+          </Text>
+          <Text
+            style={{
+              marginHorizontal: 20,
+              borderWidth: 2,
+              padding: 4,
+              paddingHorizontal: 10,
+              fontSize: 16,
+              borderRadius: 4
+            }}
+          >
+            {" "}
+            Karte
+          </Text>
         </View>
         <Button text={"Bezahlen"} styleButton={{ width: 200 }} />
       </View>
