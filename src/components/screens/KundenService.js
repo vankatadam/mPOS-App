@@ -18,9 +18,9 @@ import MainHeader from "../MainHeader";
 
 export default function Kundenservice() {
   return (
-    <ScrollView>
-      <SafeAreaView style={styles.container}>
-        <MainHeader text="Kundenservice" />
+    <SafeAreaView style={styles.container}>
+      <MainHeader text="Kundenservice" />
+      <ScrollView>
         <Text style={styles.text}>Wie können wir Ihnen helfen?</Text>
         <Text style={styles.text}>
           Schreiben Sie uns einfach eine Nachricht:
@@ -45,8 +45,8 @@ export default function Kundenservice() {
             alignSelf: "center"
           }}
         />
-      </SafeAreaView>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
