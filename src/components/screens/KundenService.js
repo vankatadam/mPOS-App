@@ -18,31 +18,35 @@ import MainHeader from "../MainHeader";
 
 export default function Kundenservice() {
   return (
-    <SafeAreaView style={styles.container}>
-      <MainHeader text="Kundenservice" />
-      <Text style={styles.text}>Wie können wir Ihnen helfen?</Text>
-      <Text style={styles.text}>Schreiben Sie uns einfach eine Nachricht:</Text>
-      <Text style={styles.text}>Betreff:</Text>
-      <TextInput style={styles.textInput}></TextInput>
-      <Text style={styles.text}>Vorname:</Text>
-      <TextInput style={styles.textInput}></TextInput>
-      <Text style={styles.text}>Nachname:</Text>
-      <TextInput style={styles.textInput}></TextInput>
-      <Text style={styles.text}>Telefon:</Text>
-      <TextInput style={styles.textInput}></TextInput>
-      <Text style={styles.text}>E-Mail-Adresse:</Text>
-      <TextInput style={styles.textInput}></TextInput>
-      <Text style={styles.text}>Womit können wir Ihnen helfen?</Text>
-      <TextInput style={styles.area}></TextInput>
-      <Button
-        text="senden"
-        styleButton={{
-          marginVertical: 16,
-          width: 200,
-          alignSelf: "center"
-        }}
-      />
-    </SafeAreaView>
+    <ScrollView>
+      <SafeAreaView style={styles.container}>
+        <MainHeader text="Kundenservice" />
+        <Text style={styles.text}>Wie können wir Ihnen helfen?</Text>
+        <Text style={styles.text}>
+          Schreiben Sie uns einfach eine Nachricht:
+        </Text>
+        <Text style={styles.text}>Betreff:</Text>
+        <TextInput style={styles.textInput}></TextInput>
+        <Text style={styles.text}>Vorname:</Text>
+        <TextInput style={styles.textInput}></TextInput>
+        <Text style={styles.text}>Nachname:</Text>
+        <TextInput style={styles.textInput}></TextInput>
+        <Text style={styles.text}>Telefon:</Text>
+        <TextInput style={styles.textInput}></TextInput>
+        <Text style={styles.text}>E-Mail-Adresse:</Text>
+        <TextInput style={styles.textInput}></TextInput>
+        <Text style={styles.text}>Womit können wir Ihnen helfen?</Text>
+        <TextInput style={styles.area}></TextInput>
+        <Button
+          text="senden"
+          styleButton={{
+            marginVertical: 16,
+            width: 200,
+            alignSelf: "center"
+          }}
+        />
+      </SafeAreaView>
+    </ScrollView>
   );
 }
 
