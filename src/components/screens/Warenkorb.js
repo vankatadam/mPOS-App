@@ -19,6 +19,8 @@ import { BarCodeScanner } from "expo-barcode-scanner";
 import EinkaufslisteItem from "../EinkaufslisteItem";
 import Button from "./Button";
 import MainHeader from "../MainHeader";
+import { useDispatch } from "react-redux";
+import { loggedUser } from "../../store/actions/shops";
 
 export default function Warenkorb({ navigation }) {
   //List Items

@@ -3,11 +3,19 @@ import { View, StyleSheet, Text, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import { screenWidth } from "./screenWidth";
+import * as firebase from "firebase";
 
 export default function MainHeader(props) {
   const selectedShop = useSelector(state => state.shops.selectedShop);
   const loggedUser = useSelector(state => state.shops.loggedUser);
-
+  /*
+  var logged;
+  if (firebase.auth().currentUser.displayName != null) {
+    logged = firebase.auth().currentUser.displayName;
+  } else {
+    logged = "Bitte einloggen";
+  }
+  */
   var logo;
   if (selectedShop === "Edeka") {
     logo = require("../../assets/Logo_Edeka.png");
@@ -64,6 +72,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: 80,
     textAlign: "center",
-    color: "#ff6600"
+    color: "#ff6600",
+    paddingHorizontal: 6
   }
 });

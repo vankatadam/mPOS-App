@@ -44,7 +44,10 @@ export default function Weiteres({ navigation }) {
           <Ionicons name="md-card" size={50} style={styles.icon} />
           <Text style={styles.functionText}>Zahlungsarten</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.moreFunction}>
+        <TouchableOpacity
+          style={styles.moreFunction}
+          onPress={() => navigation.navigate("MeineFiliale")}
+        >
           <Ionicons name="md-locate" size={50} style={styles.icon} />
           <Text style={styles.functionText}>Meine Filiale</Text>
         </TouchableOpacity>

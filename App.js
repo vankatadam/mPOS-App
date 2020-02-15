@@ -46,6 +46,7 @@ import Einkaufe from "./src/components/screens/Einkaufe";
 import PersonlicheAngaben from "./src/components/screens/PersonlicheAngaben";
 
 import Zahlungsarten from "./src/components/screens/Zahlungsarten";
+import MeineFiliale from "./src/components/screens/MeineFiliale";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -236,6 +237,7 @@ function App() {
           <Stack.Screen name="KundenDaten" component={PersonlicheAngaben} />
           <Stack.Screen name="Bons" component={Einkaufe} />
           <Stack.Screen name="Zahlungsarten" component={Zahlungsarten} />
+          <Stack.Screen name="MeineFiliale" component={MeineFiliale} />
         </Stack.Navigator>
       </NavigationNativeContainer>
     </Provider>
