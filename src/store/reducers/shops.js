@@ -1,7 +1,7 @@
 const initialState = {
   shops: ["Edeka", "Aldi_Sued", "Rewe"],
   selectedShop: "Edeka",
-  loggedUser: "Bitte einloggen"
+  loggedUser: "Michael Harr"
 };
 
 const shopsReducer = (state = initialState, action) => {
